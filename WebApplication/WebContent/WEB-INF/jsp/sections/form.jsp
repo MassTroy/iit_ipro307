@@ -1,46 +1,79 @@
 
-	<div class="addressForm">
-		<form class="form-horizontal" action="submit" method="POST">
+<div class="addressForm">
+	<legend>Origin / Destination</legend>
+	<form class="form-horizontal" action="submit" method="POST">
 		<fieldset>
 
-		<!-- Form Name -->
-		<legend>Origin / Destination</legend>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="start">Origin</label>
+				<div class="col-md-8">
+					<input id="start" name="start" type="search" placeholder=""
+						class="form-control input-md" required="">
 
-		<!-- Search input-->
-		<div class="form-group">
-		  <label class="col-md-3 control-label" for="start">Origin</label>
-		  <div class="col-md-8">
-		    <input id="start" name="start" type="search" placeholder="" class="form-control input-md" required="" value="Denver, CO">
-		    
-		  </div>
-		</div>
+				</div>
+			</div>
 
-		<!-- Search input-->
-		<div class="form-group">
-		  <label class="col-md-3 control-label" for="dest">Destination</label>
-		  <div class="col-md-8">
-		    <input id="dest" name="dest" type="search" placeholder="" class="form-control input-md" required="" value="Chicago, IL">
-		    
-		  </div>
-		</div>
+			<!-- Search input-->
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="dest">Destination</label>
+				<div class="col-md-8">
+					<input id="dest" name="dest" type="search" placeholder=""
+						class="form-control input-md" required="">
 
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-md-3 control-label" for="temperature">Temperature</label>  
-		  <div class="col-md-4">
-		  <input id="temperature" name="temperature" type="text" placeholder="fahrenheit" class="form-control input-md" required="" value="65">
-		    
-		  </div>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="startTemp">
+					Starting Temperature</label>
+				<div class="col-md-2">
+					<input id="startTemp" name="startTemp" type="text" placeholder=""
+						class="form-control input-md">
+				</div>
+				
+				
+				<label class="col-md-2 control-label" for="tempUnit">Unit</label>
+				<div class="col-md-4" style="margin-left: 15px;">
+					<label class="radio" for="tempUnit-fahrenheit">
+					<input type="radio" name="tempUnit" id="tempUnit-0"
+						value="Fahrenheit" checked="checked" required="required">
+						Fahrenheit
+					</label>
+					<label class="radio" for="tempUnit-1">
+						<input type="radio" name="tempUnit" id="tempUnit-1"
+							value="Celsius" required="required">
+							Celsius
+					</label>
+				</div>
+			</div>
 
-		  <div class="col-md-4">
-		    <button id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
-		  </div>
-		</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for="startTemp">
+					Min Temperature</label>
+				<div class="col-md-2">
+					<input id="minTemp" name="minTemp" type="text" placeholder=""
+						class="form-control input-md">
+				</div>
+				
+				<label class="col-md-2 control-label" for="startTemp">
+					Max Temperature</label>
+				<div class="col-md-2">
+					<input id="maxTemp" name="maxTemp" type="text" placeholder=""
+						class="form-control input-md">
+				</div>
+			</div>
 
-		<!-- Button -->
-		<div class="form-group">
-		</div>
+			<div class="form-group">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<button id="submit" name="submit"
+						class="btn btn-primary pull-right">Submit</button>
+				</div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group"></div>
 
 		</fieldset>
-		</form>
-	</div>
+	</form>
+</div>
