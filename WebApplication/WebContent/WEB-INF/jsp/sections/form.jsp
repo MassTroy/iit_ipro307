@@ -1,13 +1,13 @@
 
 <div class="addressForm">
 	<legend>Origin / Destination</legend>
-	<form class="form-horizontal" action="submit" method="POST">
+	<form class="form-horizontal" name="form" action="submit" method="POST">
 		<fieldset>
 
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="start">Origin</label>
 				<div class="col-md-8">
-					<input id="start" name="start" type="search" placeholder=""
+					<input id="origin" name="origin" type="search" placeholder=""
 						class="form-control input-md" required="">
 
 				</div>
@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="dest">Destination</label>
 				<div class="col-md-8">
-					<input id="dest" name="dest" type="search" placeholder=""
+					<input id="destination" name="destination" type="search" placeholder=""
 						class="form-control input-md" required="">
 
 				</div>
@@ -32,15 +32,15 @@
 				</div>
 				
 				
-				<label class="col-md-2 control-label" for="tempUnit">Unit</label>
+				<label class="col-md-2 control-label" for="unit">Unit</label>
 				<div class="col-md-4" style="margin-left: 15px;">
-					<label class="radio" for="tempUnit-fahrenheit">
-					<input type="radio" name="tempUnit" id="tempUnit-0"
+					<label class="radio" for="unit-fahrenheit">
+					<input type="radio" name="unit" id="unit-fahrenheit"
 						value="Fahrenheit" checked="checked" required="required">
 						Fahrenheit
 					</label>
-					<label class="radio" for="tempUnit-1">
-						<input type="radio" name="tempUnit" id="tempUnit-1"
+					<label class="radio" for="unit-celsius">
+						<input type="radio" name="unit" id="unit-celsius"
 							value="Celsius" required="required">
 							Celsius
 					</label>
