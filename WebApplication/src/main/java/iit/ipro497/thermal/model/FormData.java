@@ -75,4 +75,8 @@ public class FormData {
 				+ startTemp + ", unit=" + unit + ", minTemp=" + minTemp + ", maxTemp=" + maxTemp
 				+ "]";
 	}
+
+	public void validate() {
+		// TODO Auto-generated method stub
+	}
 }

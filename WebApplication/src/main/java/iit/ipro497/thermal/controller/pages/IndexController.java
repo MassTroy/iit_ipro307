@@ -10,10 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController extends AbstractController {
 
-	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView index() {
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav;
 		
+		if (session.isNew()) {
+			mav = new ModelAndView("index");
+		} else {
+			mav = new ModelAndView("redirect:display");
+		}
+
 		return mav;
 	}
 
