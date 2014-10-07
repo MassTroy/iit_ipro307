@@ -1,3 +1,24 @@
+<%@page import="iit.ipro497.thermal.model.FormData"%>
+<%@page import="iit.ipro497.thermal.model.DisplayModel"%>
+<%
+DisplayModel model = (DisplayModel)request.getAttribute("model");
+String origin = "";
+String destination = "";
+String startTemp = "";
+String minTemp = "";
+String maxTemp = "";
+if (model != null && model.getForm() != null) {
+	FormData form = model.getForm();
+	origin = form.getOrigin();
+	destination = form.getDestination();
+	if (form.getStartTemp() != null)
+		startTemp = form.getStartTemp().toString();
+	if (form.getMinTemp() != null)
+		minTemp = form.getMinTemp().toString();
+	if (form.getMaxTemp() != null)
+		maxTemp = form.getMaxTemp().toString();
+}
+%>
 
 <div class="addressForm">
 	<legend>Origin / Destination</legend>
@@ -8,7 +29,7 @@
 				<label class="col-md-2 control-label" for="start">Origin</label>
 				<div class="col-md-8">
 					<input id="origin" name="origin" type="search" placeholder=""
-						class="form-control input-md" required="">
+						class="form-control input-md" required="" value="<%= origin %>">
 
 				</div>
 			</div>
@@ -18,7 +39,7 @@
 				<label class="col-md-2 control-label" for="dest">Destination</label>
 				<div class="col-md-8">
 					<input id="destination" name="destination" type="search" placeholder=""
-						class="form-control input-md" required="">
+						class="form-control input-md" required="" value="<%= destination %>">
 
 				</div>
 			</div>
@@ -28,7 +49,7 @@
 					Starting Temperature</label>
 				<div class="col-md-2">
 					<input id="startTemp" name="startTemp" type="text" placeholder=""
-						class="form-control input-md">
+						class="form-control input-md" value="<%= startTemp %>">
 				</div>
 				
 				
@@ -48,18 +69,18 @@
 			</div>
 
 			<div class="form-group">
-				<label class="col-md-2 control-label" for="startTemp">
+				<label class="col-md-2 control-label" for="minTemp">
 					Min Temperature</label>
 				<div class="col-md-2">
 					<input id="minTemp" name="minTemp" type="text" placeholder=""
-						class="form-control input-md">
+						class="form-control input-md" value="<%= minTemp %>">
 				</div>
 				
-				<label class="col-md-2 control-label" for="startTemp">
+				<label class="col-md-2 control-label" for="maxTemp">
 					Max Temperature</label>
 				<div class="col-md-2">
 					<input id="maxTemp" name="maxTemp" type="text" placeholder=""
-						class="form-control input-md">
+						class="form-control input-md" value="<%= maxTemp %>">
 				</div>
 			</div>
 
