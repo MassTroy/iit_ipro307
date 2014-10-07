@@ -1,4 +1,14 @@
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="iit.ipro497.thermal.model.RouteData"%>
+<%@page import="java.util.List"%>
+<%@page import="iit.ipro497.thermal.model.DisplayModel"%>
+<%
+DisplayModel model = (DisplayModel)request.getAttribute("model");
+List<RouteData> routeList = new ArrayList<RouteData>();
+if (model != null && model.getRouteList() != null) {
+	routeList = model.getRouteList();
+}
+%>
 	<div class="routeList">
 		<legend>Routes</legend>
 	

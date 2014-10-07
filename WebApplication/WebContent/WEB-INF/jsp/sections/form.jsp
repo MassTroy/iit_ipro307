@@ -92,9 +92,8 @@ if (model != null && model.getForm() != null) {
 				</div>
 			</div>
 
-			<!-- Button -->
-			<div class="form-group"></div>
-
 		</fieldset>
 	</form>
+	
+	<!-- TODO: add clear button -->
 </div>
