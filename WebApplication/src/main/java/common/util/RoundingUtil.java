@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.util;
+package common.util;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.config;
+package iit.ipro497.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource({ "classpath:" + PersistenceConfig.PROPERTIES_FILE })
 @ComponentScan({ PersistenceConfig.COMPONENT_SCAN })
 public class PersistenceConfig {
-	public static final String COMPONENT_SCAN = "iit.ipro497.thermal.persistence";
+	public static final String COMPONENT_SCAN = "iit.ipro497.persistence";
 	public static final String PROPERTIES_FILE = "ipro497-hibernate.properties";
-	public static final String ENTITIES_SCAN = "iit.ipro497.thermal.persistence";
+	public static final String ENTITIES_SCAN = "iit.ipro497.persistence";
 	
 	@Autowired
 	private Environment env;

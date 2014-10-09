@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.persistence;
+package iit.ipro497.persistence;
 // Generated Oct 8, 2014 3:19:23 PM by Hibernate Tools 4.0.0
 
 import static javax.persistence.GenerationType.IDENTITY;

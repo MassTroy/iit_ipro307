@@ -1,11 +1,11 @@
 package iit.ipro497.thermal.controller.admin;
 
-import iit.ipro497.thermal.client.GoogleGeocodeClient;
+import iit.ipro497.domain.client.GoogleGeocodeClient;
+import iit.ipro497.domain.data.GeoCoordinate;
+import iit.ipro497.exception.BadRequestException;
+import iit.ipro497.persistence.IntersectionCoord;
+import iit.ipro497.persistence.dao.IntersectionCoordDAO;
 import iit.ipro497.thermal.controller.AbstractController;
-import iit.ipro497.thermal.exception.BadRequestException;
-import iit.ipro497.thermal.model.data.GeoCoordinate;
-import iit.ipro497.thermal.persistence.IntersectionCoord;
-import iit.ipro497.thermal.persistence.dao.IntersectionCoordDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,5 +1,7 @@
 package iit.ipro497.thermal.model;
 
+import iit.ipro497.domain.data.RouteData;
+
 import java.util.List;
 
 public class DisplayModel {

@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.config;
+package iit.ipro497.config;
 
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;

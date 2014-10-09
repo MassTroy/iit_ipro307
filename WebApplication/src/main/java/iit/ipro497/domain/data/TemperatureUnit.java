@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.model;
+package iit.ipro497.domain.data;
 
 public enum TemperatureUnit {
 	Fahrenheit,

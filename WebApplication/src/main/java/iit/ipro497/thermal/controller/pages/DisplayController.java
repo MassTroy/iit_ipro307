@@ -1,10 +1,10 @@
 package iit.ipro497.thermal.controller.pages;
 
+import iit.ipro497.domain.RouteFinder;
+import iit.ipro497.domain.data.RouteData;
 import iit.ipro497.thermal.controller.AbstractController;
-import iit.ipro497.thermal.domain.RouteFinder;
 import iit.ipro497.thermal.model.DisplayModel;
 import iit.ipro497.thermal.model.FormData;
-import iit.ipro497.thermal.model.RouteData;
 
 import java.util.List;
 

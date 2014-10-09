@@ -1,8 +1,8 @@
-package iit.ipro497.thermal.client;
+package iit.ipro497.domain.client;
 
-import iit.ipro497.thermal.config.AppConfig;
-import iit.ipro497.thermal.exception.BadRequestException;
-import iit.ipro497.thermal.model.data.GeoCoordinate;
+import iit.ipro497.config.AppConfig;
+import iit.ipro497.domain.data.GeoCoordinate;
+import iit.ipro497.exception.BadRequestException;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.config;
+package iit.ipro497.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

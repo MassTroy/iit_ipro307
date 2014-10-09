@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.exception;
+package iit.ipro497.exception;
 
 public class BadRequestException extends Exception {
 	private static final long serialVersionUID = -3365251562586232263L;

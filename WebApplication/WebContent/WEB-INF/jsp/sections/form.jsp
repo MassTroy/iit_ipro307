@@ -1,5 +1,5 @@
 <%@page import="java.text.Normalizer.Form"%>
-<%@page import="iit.ipro497.thermal.model.TemperatureUnit"%>
+<%@page import="iit.ipro497.domain.data.TemperatureUnit"%>
 <%@page import="iit.ipro497.thermal.model.FormData"%>
 <%@page import="iit.ipro497.thermal.model.DisplayModel"%>
 <%

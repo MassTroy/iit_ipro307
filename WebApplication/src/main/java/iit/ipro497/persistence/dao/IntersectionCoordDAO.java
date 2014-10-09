@@ -1,7 +1,7 @@
-package iit.ipro497.thermal.persistence.dao;
+package iit.ipro497.persistence.dao;
 // Generated Oct 8, 2014 3:19:24 PM by Hibernate Tools 4.0.0
 
-import iit.ipro497.thermal.persistence.IntersectionCoord;
+import iit.ipro497.persistence.IntersectionCoord;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

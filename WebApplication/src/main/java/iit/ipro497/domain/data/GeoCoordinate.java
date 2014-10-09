@@ -1,4 +1,4 @@
-package iit.ipro497.thermal.model.data;
+package iit.ipro497.domain.data;
 
 import com.google.api.geocode.resp.Location;
 

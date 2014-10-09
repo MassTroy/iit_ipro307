@@ -1,5 +1,7 @@
 package iit.ipro497.thermal.model;
 
+import iit.ipro497.domain.data.TemperatureUnit;
+
 public class FormData {
 	private static final Double DEFAULT_START_F = 65.0;
 	private static final Double DEFAULT_START_C = 20.0;

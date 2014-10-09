@@ -1,8 +1,8 @@
-package iit.ipro497.thermal.domain;
+package iit.ipro497.domain;
 
+import iit.ipro497.domain.data.RouteData;
+import iit.ipro497.domain.data.TemperatureUnit;
 import iit.ipro497.thermal.model.FormData;
-import iit.ipro497.thermal.model.RouteData;
-import iit.ipro497.thermal.model.TemperatureUnit;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

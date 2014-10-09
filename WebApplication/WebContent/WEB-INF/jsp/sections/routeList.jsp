@@ -1,6 +1,6 @@
-<%@page import="iit.ipro497.thermal.util.RoundingUtil"%>
+<%@page import="common.util.RoundingUtil"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="iit.ipro497.thermal.model.RouteData"%>
+<%@page import="iit.ipro497.domain.data.RouteData"%>
 <%@page import="java.util.List"%>
 <%@page import="iit.ipro497.thermal.model.DisplayModel"%>
 <%
