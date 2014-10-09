@@ -14,7 +14,7 @@ public class IndexController extends AbstractController {
 	public ModelAndView index() {
 		ModelAndView mav;
 		
-		if (session.isNew()) {
+		if (session.getAttribute(FORM_ATTRIBUTE) == null) {
 			mav = new ModelAndView("index");
 		} else {
 			mav = new ModelAndView("redirect:display");

@@ -5,22 +5,26 @@ public class RouteData {
 	String arrivalTime;
 	String duration;
 	Long miles;
+	TemperatureUnit tempUnit;
 	Double minTemp;
 	Double maxTemp;
 	Double finalTemp;
+	Double averageTemp;
 
 	public RouteData() {
 	}
 
-	public RouteData(String title, String arrivalTime, String duration, Long miles,
-			Double minTemp, Double maxTemp, Double finalTemp) {
+	public RouteData(String title, String arrivalTime, String duration, Long miles, TemperatureUnit tempUnit, Double minTemp,
+			Double maxTemp, Double finalTemp, Double averageTemp) {
 		this.title = title;
 		this.arrivalTime = arrivalTime;
 		this.duration = duration;
 		this.miles = miles;
+		this.tempUnit = tempUnit;
 		this.minTemp = minTemp;
 		this.maxTemp = maxTemp;
 		this.finalTemp = finalTemp;
+		this.averageTemp = averageTemp;
 	}
 
 	public String getTitle() {
@@ -55,6 +59,14 @@ public class RouteData {
 		this.miles = miles;
 	}
 
+	public TemperatureUnit getTempUnit() {
+		return tempUnit;
+	}
+
+	public void setTempUnit(TemperatureUnit tempUnit) {
+		this.tempUnit = tempUnit;
+	}
+
 	public Double getMinTemp() {
 		return minTemp;
 	}
@@ -79,10 +91,18 @@ public class RouteData {
 		this.finalTemp = finalTemp;
 	}
 
+	public Double getAverageTemp() {
+		return averageTemp;
+	}
+
+	public void setAverageTemp(Double averageTemp) {
+		this.averageTemp = averageTemp;
+	}
+
 	@Override
 	public String toString() {
-		return "RouteData [title=" + title + ", arrivalTime=" + arrivalTime + ", duration="
-				+ duration + ", miles=" + miles + ", minTemp=" + minTemp + ", maxTemp=" + maxTemp
-				+ ", finalTemp=" + finalTemp + "]";
+		return "RouteData [title=" + title + ", arrivalTime=" + arrivalTime + ", duration=" + duration + ", miles=" + miles + ", tempUnit="
+				+ tempUnit + ", minTemp=" + minTemp + ", maxTemp=" + maxTemp + ", finalTemp=" + finalTemp + ", averageTemp=" + averageTemp
+				+ "]";
 	}
 }
