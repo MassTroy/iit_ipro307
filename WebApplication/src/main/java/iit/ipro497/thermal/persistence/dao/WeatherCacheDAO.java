@@ -7,12 +7,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class WeatherCache.
  * @see .WeatherCache
  * @author Hibernate Tools
  */
+@Repository
 public class WeatherCacheDAO {
 
 	private static final Log log = LogFactory.getLog(WeatherCacheDAO.class);

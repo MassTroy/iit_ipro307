@@ -56,7 +56,7 @@ public class IntersectionCoord implements Serializable {
 	}
 
 	void setName(String name) {
-		this.name = name;
+		this.name = name.toLowerCase();
 	}
 
 	@Column(name = "latitude", nullable = false, precision = 10, scale = 0, updatable = false)

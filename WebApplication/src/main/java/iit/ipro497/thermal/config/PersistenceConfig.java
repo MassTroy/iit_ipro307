@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class PersistenceConfig {
 	public static final String COMPONENT_SCAN = "iit.ipro497.thermal.persistence";
 	public static final String PROPERTIES_FILE = "ipro497-hibernate.properties";
-	public static final String ENTITIES_SCAN = "iit.ipro497.thermal.persistence.entity";
+	public static final String ENTITIES_SCAN = "iit.ipro497.thermal.persistence";
 	
 	@Autowired
 	private Environment env;

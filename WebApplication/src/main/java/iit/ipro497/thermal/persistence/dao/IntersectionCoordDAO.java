@@ -6,13 +6,16 @@ import iit.ipro497.thermal.persistence.IntersectionCoord;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class IntersectionCoord.
  * @see .IntersectionCoord
  * @author Hibernate Tools
  */
+@Repository
 public class IntersectionCoordDAO {
 
 	private static final Log log = LogFactory.getLog(IntersectionCoordDAO.class);
@@ -58,6 +61,20 @@ public class IntersectionCoordDAO {
 		log.debug("getting IntersectionCoord instance with id: " + id);
 		try {
 			IntersectionCoord instance = (IntersectionCoord) sessionFactory.getCurrentSession().get(IntersectionCoord.class, id);
+			log.debug("get successful");
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+
+	public IntersectionCoord findByName(String locationName) {
+		log.debug("getting IntersectionCoord instance with locationName: " + locationName);
+		try {
+			IntersectionCoord instance = (IntersectionCoord) sessionFactory.getCurrentSession().createCriteria(IntersectionCoord.class)
+					.add(Restrictions.eq("name", locationName.toLowerCase()))
+					.uniqueResult();
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {
