@@ -1,6 +1,7 @@
 package iit.ipro497.domain.data;
 
-import com.google.api.geocode.resp.Location;
+import com.google.maps.api.common.Location;
+
 
 public class GeoCoordinate {
 	private final double latitude;

@@ -30,6 +30,8 @@
 
 	<modules>
 		<module>WebApplication</module>
+		<module>GoogleMaps_API</module>
+		<module>OpenWeatherMap_API</module>
 	</modules>
 
 </project>

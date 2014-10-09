@@ -1,9 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>iit.ipro497</groupId>
+	<parent>
+		<artifactId>PassiveThermalPom</artifactId>
+		<groupId>iit.ipro497</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
 	<artifactId>PassiveThermalWeb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>Passive Thermal - Top Level Pom</name>
 	<packaging>war</packaging>
 
@@ -58,6 +62,16 @@
 
 	<dependencies>
 		<!-- Project dependencies -->
+		<dependency>
+			<groupId>iit.ipro497</groupId>
+			<artifactId>GoogleMaps_API</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>iit.ipro497</groupId>
+			<artifactId>OpenWeatherMap_API</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<!-- Spring dependencies -->
 		<dependency>
@@ -90,7 +104,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-		
+
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>

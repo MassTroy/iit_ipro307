@@ -1,4 +1,4 @@
-package com.google.api.geocode.resp;
+package com.google.maps.api.geocode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +10,9 @@ import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
+import com.google.maps.api.common.Bounds;
+import com.google.maps.api.common.Location;
 
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({

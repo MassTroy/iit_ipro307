@@ -1,5 +1,5 @@
 
-package com.google.api.directions.resp;
+package org.openweathermap.api.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,36 +11,23 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "northeast",
-    "southwest"
+    "3h"
 })
-public class Bounds {
+public class Rain {
 
-    @JsonProperty("northeast")
-    private Location northeast;
-    @JsonProperty("southwest")
-    private Location southwest;
+    @JsonProperty("3h")
+    private long _3h;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("northeast")
-    public Location getNortheast() {
-        return northeast;
+    @JsonProperty("3h")
+    public long get3h() {
+        return _3h;
     }
 
-    @JsonProperty("northeast")
-    public void setNortheast(Location northeast) {
-        this.northeast = northeast;
-    }
-
-    @JsonProperty("southwest")
-    public Location getSouthwest() {
-        return southwest;
-    }
-
-    @JsonProperty("southwest")
-    public void setSouthwest(Location southwest) {
-        this.southwest = southwest;
+    @JsonProperty("3h")
+    public void set3h(long _3h) {
+        this._3h = _3h;
     }
 
     @JsonAnyGetter

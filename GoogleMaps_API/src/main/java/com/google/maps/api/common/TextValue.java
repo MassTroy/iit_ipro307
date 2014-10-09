@@ -1,5 +1,5 @@
 
-package com.google.api.directions.resp;
+package com.google.maps.api.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,36 +11,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "lat",
-    "lng"
+    "text",
+    "value"
 })
-public class Location {
+public class TextValue {
 
-    @JsonProperty("lat")
-    private double lat;
-    @JsonProperty("lng")
-    private double lng;
+    @JsonProperty("text")
+    private String text;
+    @JsonProperty("value")
+    private long value;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lat")
-    public double getLat() {
-        return lat;
+    @JsonProperty("text")
+    public String getText() {
+        return text;
     }
 
-    @JsonProperty("lat")
-    public void setLat(double lat) {
-        this.lat = lat;
+    @JsonProperty("text")
+    public void setText(String text) {
+        this.text = text;
     }
 
-    @JsonProperty("lng")
-    public double getLng() {
-        return lng;
+    @JsonProperty("value")
+    public long getValue() {
+        return value;
     }
 
-    @JsonProperty("lng")
-    public void setLng(double lng) {
-        this.lng = lng;
+    @JsonProperty("value")
+    public void setValue(long value) {
+        this.value = value;
     }
 
     @JsonAnyGetter

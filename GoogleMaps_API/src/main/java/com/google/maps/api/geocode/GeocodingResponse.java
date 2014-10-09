@@ -1,4 +1,4 @@
-package com.google.api.geocode.resp;
+package com.google.maps.api.geocode;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,5 +1,5 @@
 
-package com.google.api.directions.resp;
+package com.google.maps.api.directions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +11,9 @@ import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
+
+import com.google.maps.api.common.Location;
+import com.google.maps.api.common.TextValue;
 
 @JsonPropertyOrder({
     "distance",

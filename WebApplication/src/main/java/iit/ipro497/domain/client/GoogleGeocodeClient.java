@@ -7,8 +7,8 @@ import iit.ipro497.exception.BadRequestException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.api.geocode.resp.GeocodingResponse;
-import com.google.api.geocode.resp.Location;
+import com.google.maps.api.common.Location;
+import com.google.maps.api.geocode.GeocodingResponse;
 
 @Service
 public class GoogleGeocodeClient {

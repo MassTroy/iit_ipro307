@@ -1,9 +1,7 @@
 
-package com.google.api.directions.resp;
+package org.openweathermap.api.common;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonAnyGetter;
@@ -13,36 +11,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "routes",
-    "status"
+    "speed",
+    "deg"
 })
-public class DirectionsResponse {
+public class Wind {
 
-    @JsonProperty("routes")
-    private List<Route> routes = new ArrayList<Route>();
-    @JsonProperty("status")
-    private String status;
+    @JsonProperty("speed")
+    private double speed;
+    @JsonProperty("deg")
+    private double deg;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("routes")
-    public List<Route> getRoutes() {
-        return routes;
+    @JsonProperty("speed")
+    public double getSpeed() {
+        return speed;
     }
 
-    @JsonProperty("routes")
-    public void setRoutes(List<Route> routes) {
-        this.routes = routes;
+    @JsonProperty("speed")
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 
-    @JsonProperty("status")
-    public String getStatus() {
-        return status;
+    @JsonProperty("deg")
+    public double getDeg() {
+        return deg;
     }
 
-    @JsonProperty("status")
-    public void setStatus(String status) {
-        this.status = status;
+    @JsonProperty("deg")
+    public void setDeg(double deg) {
+        this.deg = deg;
     }
 
     @JsonAnyGetter

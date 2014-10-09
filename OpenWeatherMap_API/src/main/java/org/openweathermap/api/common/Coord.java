@@ -1,4 +1,5 @@
-package com.google.api.geocode.resp;
+
+package org.openweathermap.api.common;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,36 +11,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "northeast",
-    "southwest"
+    "lon",
+    "lat"
 })
-public class Bounds {
+public class Coord {
 
-    @JsonProperty("northeast")
-    private Location northeast;
-    @JsonProperty("southwest")
-    private Location southwest;
+    @JsonProperty("lon")
+    private long lon;
+    @JsonProperty("lat")
+    private long lat;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("northeast")
-    public Location getNortheast() {
-        return northeast;
+    @JsonProperty("lon")
+    public long getLon() {
+        return lon;
     }
 
-    @JsonProperty("northeast")
-    public void setNortheast(Location northeast) {
-        this.northeast = northeast;
+    @JsonProperty("lon")
+    public void setLon(long lon) {
+        this.lon = lon;
     }
 
-    @JsonProperty("southwest")
-    public Location getSouthwest() {
-        return southwest;
+    @JsonProperty("lat")
+    public long getLat() {
+        return lat;
     }
 
-    @JsonProperty("southwest")
-    public void setSouthwest(Location southwest) {
-        this.southwest = southwest;
+    @JsonProperty("lat")
+    public void setLat(long lat) {
+        this.lat = lat;
     }
 
     @JsonAnyGetter

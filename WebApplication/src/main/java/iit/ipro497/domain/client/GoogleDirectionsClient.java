@@ -5,9 +5,9 @@ import iit.ipro497.config.AppConfig;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.api.directions.resp.DirectionsResponse;
-import com.google.api.directions.resp.Location;
-import com.google.api.directions.resp.Step;
+import com.google.maps.api.common.Location;
+import com.google.maps.api.directions.DirectionsResponse;
+import com.google.maps.api.directions.Step;
 
 @Service
 public class GoogleDirectionsClient {

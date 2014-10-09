@@ -1,7 +1,9 @@
 
-package com.google.api.directions.resp;
+package com.google.maps.api.directions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonAnyGetter;
@@ -11,36 +13,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "text",
-    "value"
+    "routes",
+    "status"
 })
-public class TextValue {
+public class DirectionsResponse {
 
-    @JsonProperty("text")
-    private String text;
-    @JsonProperty("value")
-    private long value;
+    @JsonProperty("routes")
+    private List<Route> routes = new ArrayList<Route>();
+    @JsonProperty("status")
+    private String status;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("text")
-    public String getText() {
-        return text;
+    @JsonProperty("routes")
+    public List<Route> getRoutes() {
+        return routes;
     }
 
-    @JsonProperty("text")
-    public void setText(String text) {
-        this.text = text;
+    @JsonProperty("routes")
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
-    @JsonProperty("value")
-    public long getValue() {
-        return value;
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
     }
 
-    @JsonProperty("value")
-    public void setValue(long value) {
-        this.value = value;
+    @JsonProperty("status")
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @JsonAnyGetter
