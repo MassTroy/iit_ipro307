@@ -7,5 +7,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ComponentScan(basePackages = "iit.ipro497.thermal")
 @Import(value = PersistenceConfig.class)
-public class PageGenConfig {
+public class AppConfig {
+	public static final String GOOGLE_API_KEY = "AIzaSyAdorDhOfuE0hwHw9lcQgAwLSq1rAzNdvs";
+	
 }

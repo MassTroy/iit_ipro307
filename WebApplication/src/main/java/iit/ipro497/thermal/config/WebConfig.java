@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackageClasses = { PageGenConfig.class })
+@ComponentScan(basePackageClasses = { AppConfig.class })
 public class WebConfig extends WebMvcConfigurerAdapter {
 	private static final int RESOURCE_CACHE_PERIOD = 31556926;
 	private static final String RESOURCES = "/WEB-INF/resources/";
