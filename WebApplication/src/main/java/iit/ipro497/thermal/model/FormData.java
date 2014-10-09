@@ -1,6 +1,9 @@
 package iit.ipro497.thermal.model;
 
 public class FormData {
+	private static final Double DEFAULT_START_F = 65.0;
+	private static final Double DEFAULT_START_C = 20.0;
+	
 	String origin;
 	String destination;
 	Double startTemp;
@@ -38,7 +41,18 @@ public class FormData {
 	}
 
 	public Double getStartTemp() {
-		return startTemp;
+		if (startTemp != null)
+			return startTemp;
+		else if (minTemp != null && maxTemp != null)
+			return (minTemp + maxTemp) / 2.0;
+		else if (maxTemp != null)
+			return maxTemp;
+		else if (minTemp != null)
+			return minTemp;
+		else if (unit == TemperatureUnit.Celsius)
+			return DEFAULT_START_C;
+		else
+			return DEFAULT_START_F;
 	}
 
 	public void setStartTemp(Double startTemp) {

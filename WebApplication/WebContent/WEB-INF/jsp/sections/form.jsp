@@ -1,3 +1,5 @@
+<%@page import="java.text.Normalizer.Form"%>
+<%@page import="iit.ipro497.thermal.model.TemperatureUnit"%>
 <%@page import="iit.ipro497.thermal.model.FormData"%>
 <%@page import="iit.ipro497.thermal.model.DisplayModel"%>
 <%
@@ -7,6 +9,8 @@ String destination = "";
 String startTemp = "";
 String minTemp = "";
 String maxTemp = "";
+TemperatureUnit unit = TemperatureUnit.Fahrenheit;
+
 if (model != null && model.getForm() != null) {
 	FormData form = model.getForm();
 	origin = form.getOrigin();
@@ -17,6 +21,8 @@ if (model != null && model.getForm() != null) {
 		minTemp = form.getMinTemp().toString();
 	if (form.getMaxTemp() != null)
 		maxTemp = form.getMaxTemp().toString();
+	if (form.getUnit() != null)
+		unit = form.getUnit();
 }
 %>
 
@@ -57,12 +63,12 @@ if (model != null && model.getForm() != null) {
 				<div class="col-md-4" style="margin-left: 15px;">
 					<label class="radio" for="unit-fahrenheit">
 					<input type="radio" name="unit" id="unit-fahrenheit"
-						value="Fahrenheit" checked="checked" required="required">
+						value="Fahrenheit" <%= unit == TemperatureUnit.Fahrenheit ? "checked=\"checked\"" : "" %> required="required">
 						Fahrenheit
 					</label>
 					<label class="radio" for="unit-celsius">
 						<input type="radio" name="unit" id="unit-celsius"
-							value="Celsius" required="required">
+							value="Celsius" <%= unit == TemperatureUnit.Celsius ? "checked=\"checked\"" : "" %> required="required">
 							Celsius
 					</label>
 				</div>
