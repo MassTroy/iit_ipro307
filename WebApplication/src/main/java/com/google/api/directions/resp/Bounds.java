@@ -1,4 +1,5 @@
-package com.google.api.geocode.resp;
+
+package com.google.api.directions.resp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,36 +11,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "lat",
-    "lng"
+    "northeast",
+    "southwest"
 })
-public class Southwest_ {
+public class Bounds {
 
-    @JsonProperty("lat")
-    private double lat;
-    @JsonProperty("lng")
-    private double lng;
+    @JsonProperty("northeast")
+    private Location northeast;
+    @JsonProperty("southwest")
+    private Location southwest;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lat")
-    public double getLat() {
-        return lat;
+    @JsonProperty("northeast")
+    public Location getNortheast() {
+        return northeast;
     }
 
-    @JsonProperty("lat")
-    public void setLat(double lat) {
-        this.lat = lat;
+    @JsonProperty("northeast")
+    public void setNortheast(Location northeast) {
+        this.northeast = northeast;
     }
 
-    @JsonProperty("lng")
-    public double getLng() {
-        return lng;
+    @JsonProperty("southwest")
+    public Location getSouthwest() {
+        return southwest;
     }
 
-    @JsonProperty("lng")
-    public void setLng(double lng) {
-        this.lng = lng;
+    @JsonProperty("southwest")
+    public void setSouthwest(Location southwest) {
+        this.southwest = southwest;
     }
 
     @JsonAnyGetter

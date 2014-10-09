@@ -27,7 +27,7 @@ public class Geometry {
     @JsonProperty("location_type")
     private String locationType;
     @JsonProperty("viewport")
-    private Viewport viewport;
+    private Bounds viewport;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -62,12 +62,12 @@ public class Geometry {
     }
 
     @JsonProperty("viewport")
-    public Viewport getViewport() {
+    public Bounds getViewport() {
         return viewport;
     }
 
     @JsonProperty("viewport")
-    public void setViewport(Viewport viewport) {
+    public void setViewport(Bounds viewport) {
         this.viewport = viewport;
     }
 

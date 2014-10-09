@@ -34,6 +34,8 @@ public class AddIntersectionController extends AbstractController {
 			coordinate = googleGeocodeClient.getGeoCoordinate(locationName);
 			intersection = new IntersectionCoord(locationName, coordinate.getLatitude(), coordinate.getLongitude());
 			intersectionCoordDAO.persist(intersection);
+		} else {
+			coordinate = new GeoCoordinate(intersection.getLatitude(), intersection.getLongitude());
 		}
 		
 		return coordinate;

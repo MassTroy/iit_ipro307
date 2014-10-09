@@ -1,6 +1,9 @@
-package com.google.api.geocode.resp;
 
+package com.google.api.directions.resp;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.codehaus.jackson.annotate.JsonAnyGetter;
@@ -10,36 +13,36 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "lat",
-    "lng"
+    "routes",
+    "status"
 })
-public class Northeast {
+public class DirectionsResponse {
 
-    @JsonProperty("lat")
-    private double lat;
-    @JsonProperty("lng")
-    private double lng;
+    @JsonProperty("routes")
+    private List<Route> routes = new ArrayList<Route>();
+    @JsonProperty("status")
+    private String status;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lat")
-    public double getLat() {
-        return lat;
+    @JsonProperty("routes")
+    public List<Route> getRoutes() {
+        return routes;
     }
 
-    @JsonProperty("lat")
-    public void setLat(double lat) {
-        this.lat = lat;
+    @JsonProperty("routes")
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
-    @JsonProperty("lng")
-    public double getLng() {
-        return lng;
+    @JsonProperty("status")
+    public String getStatus() {
+        return status;
     }
 
-    @JsonProperty("lng")
-    public void setLng(double lng) {
-        this.lng = lng;
+    @JsonProperty("status")
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @JsonAnyGetter

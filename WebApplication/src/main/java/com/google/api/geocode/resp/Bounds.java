@@ -16,29 +16,29 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
 public class Bounds {
 
     @JsonProperty("northeast")
-    private Northeast northeast;
+    private Location northeast;
     @JsonProperty("southwest")
-    private Southwest southwest;
+    private Location southwest;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("northeast")
-    public Northeast getNortheast() {
+    public Location getNortheast() {
         return northeast;
     }
 
     @JsonProperty("northeast")
-    public void setNortheast(Northeast northeast) {
+    public void setNortheast(Location northeast) {
         this.northeast = northeast;
     }
 
     @JsonProperty("southwest")
-    public Southwest getSouthwest() {
+    public Location getSouthwest() {
         return southwest;
     }
 
     @JsonProperty("southwest")
-    public void setSouthwest(Southwest southwest) {
+    public void setSouthwest(Location southwest) {
         this.southwest = southwest;
     }
 

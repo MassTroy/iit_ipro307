@@ -1,4 +1,5 @@
-package com.google.api.geocode.resp;
+
+package com.google.api.directions.resp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,36 +11,23 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
-    "lat",
-    "lng"
+    "points"
 })
-public class Southwest {
+public class Polyline {
 
-    @JsonProperty("lat")
-    private double lat;
-    @JsonProperty("lng")
-    private double lng;
+    @JsonProperty("points")
+    private String points;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("lat")
-    public double getLat() {
-        return lat;
+    @JsonProperty("points")
+    public String getPoints() {
+        return points;
     }
 
-    @JsonProperty("lat")
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
-    @JsonProperty("lng")
-    public double getLng() {
-        return lng;
-    }
-
-    @JsonProperty("lng")
-    public void setLng(double lng) {
-        this.lng = lng;
+    @JsonProperty("points")
+    public void setPoints(String points) {
+        this.points = points;
     }
 
     @JsonAnyGetter

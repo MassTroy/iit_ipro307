@@ -1,4 +1,5 @@
-package com.google.api.geocode.resp;
+
+package com.google.api.directions.resp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "lat",
     "lng"
 })
-public class Northeast_ {
+public class Location {
 
     @JsonProperty("lat")
     private double lat;
