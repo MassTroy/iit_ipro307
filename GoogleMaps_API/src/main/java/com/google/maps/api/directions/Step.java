@@ -1,12 +1,7 @@
 
 package com.google.maps.api.directions;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -23,6 +18,7 @@ import com.google.maps.api.common.TextValue;
     "travel_mode",
     "maneuver"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Step {
 
     @JsonProperty("distance")
@@ -41,8 +37,6 @@ public class Step {
     private String travelMode;
     @JsonProperty("maneuver")
     private String maneuver;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("distance")
     public TextValue getDistance() {
@@ -124,14 +118,11 @@ public class Step {
         this.maneuver = maneuver;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Step [distance=" + distance + ", duration=" + duration + ", endLocation=" + endLocation + ", htmlInstructions="
+				+ htmlInstructions + ", polyline=" + polyline + ", startLocation=" + startLocation + ", travelMode=" + travelMode
+				+ ", maneuver=" + maneuver + "]";
+	}
 
 }

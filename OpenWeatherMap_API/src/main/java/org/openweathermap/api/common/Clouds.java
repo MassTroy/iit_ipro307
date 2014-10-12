@@ -1,24 +1,18 @@
 
 package org.openweathermap.api.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({
     "all"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Clouds {
 
     @JsonProperty("all")
     private long all;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("all")
     public long getAll() {
@@ -30,14 +24,9 @@ public class Clouds {
         this.all = all;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Clouds [all=" + all + "]";
+	}
 
 }

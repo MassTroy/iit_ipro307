@@ -2,12 +2,8 @@
 package org.openweathermap.api.common;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -21,6 +17,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "sys",
     "dt_txt"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherDataPoint {
 
     @JsonProperty("dt")
@@ -39,8 +36,6 @@ public class WeatherDataPoint {
     private Sys sys;
     @JsonProperty("dt_txt")
     private String dtTxt;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("dt")
     public long getDt() {
@@ -122,14 +117,10 @@ public class WeatherDataPoint {
         this.dtTxt = dtTxt;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "WeatherDataPoint [dt=" + dt + ", main=" + main + ", weather=" + weather + ", clouds=" + clouds + ", wind=" + wind
+				+ ", rain=" + rain + ", sys=" + sys + ", dtTxt=" + dtTxt + "]";
+	}
 
 }

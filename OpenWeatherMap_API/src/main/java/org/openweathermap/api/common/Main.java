@@ -1,12 +1,7 @@
 
 package org.openweathermap.api.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -19,6 +14,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "grnd_level",
     "humidity"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Main {
 
     @JsonProperty("temp")
@@ -35,8 +31,6 @@ public class Main {
     private double grndLevel;
     @JsonProperty("humidity")
     private long humidity;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("temp")
     public double getTemp() {
@@ -108,14 +102,10 @@ public class Main {
         this.humidity = humidity;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Main [temp=" + temp + ", tempMin=" + tempMin + ", tempMax=" + tempMax + ", pressure=" + pressure + ", seaLevel=" + seaLevel
+				+ ", grndLevel=" + grndLevel + ", humidity=" + humidity + "]";
+	}
 
 }

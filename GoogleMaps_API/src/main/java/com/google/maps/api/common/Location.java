@@ -1,12 +1,7 @@
 
 package com.google.maps.api.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -14,14 +9,13 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "lat",
     "lng"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Location {
 
     @JsonProperty("lat")
     private double lat;
     @JsonProperty("lng")
     private double lng;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("lat")
     public double getLat() {
@@ -43,14 +37,9 @@ public class Location {
         this.lng = lng;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Location [lat=" + lat + ", lng=" + lng + "]";
+	}
 
 }

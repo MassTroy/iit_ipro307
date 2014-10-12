@@ -1,12 +1,7 @@
 
 package org.openweathermap.api.common;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -16,6 +11,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "sunrise",
     "sunset"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sys {
 
     @JsonProperty("message")
@@ -26,8 +22,6 @@ public class Sys {
     private long sunrise;
     @JsonProperty("sunset")
     private long sunset;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("message")
     public double getMessage() {
@@ -69,14 +63,9 @@ public class Sys {
         this.sunset = sunset;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Sys [message=" + message + ", country=" + country + ", sunrise=" + sunrise + ", sunset=" + sunset + "]";
+	}
 
 }

@@ -2,13 +2,9 @@
 package com.google.maps.api.directions;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -23,6 +19,7 @@ import com.google.maps.api.common.Bounds;
     "warnings",
     "waypoint_order"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Route {
 
     @JsonProperty("bounds")
@@ -39,8 +36,6 @@ public class Route {
     private List<Object> warnings = new ArrayList<Object>();
     @JsonProperty("waypoint_order")
     private List<Long> waypointOrder = new ArrayList<Long>();
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("bounds")
     public Bounds getBounds() {
@@ -112,14 +107,10 @@ public class Route {
         this.waypointOrder = waypointOrder;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Route [bounds=" + bounds + ", copyrights=" + copyrights + ", legs=" + legs + ", overviewPolyline=" + overviewPolyline
+				+ ", summary=" + summary + ", warnings=" + warnings + ", waypointOrder=" + waypointOrder + "]";
+	}
 
 }

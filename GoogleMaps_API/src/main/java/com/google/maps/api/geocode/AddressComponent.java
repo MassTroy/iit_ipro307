@@ -1,15 +1,11 @@
 package com.google.maps.api.geocode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Generated;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -19,6 +15,7 @@ import org.codehaus.jackson.annotate.JsonPropertyOrder;
     "short_name",
     "types"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AddressComponent {
 
     @JsonProperty("long_name")
@@ -27,8 +24,6 @@ public class AddressComponent {
     private String shortName;
     @JsonProperty("types")
     private List<String> types = new ArrayList<String>();
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("long_name")
     public String getLongName() {
@@ -60,14 +55,9 @@ public class AddressComponent {
         this.types = types;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "AddressComponent [longName=" + longName + ", shortName=" + shortName + ", types=" + types + "]";
+	}
 
 }

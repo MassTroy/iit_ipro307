@@ -2,13 +2,9 @@
 package com.google.maps.api.directions;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
@@ -25,6 +21,7 @@ import com.google.maps.api.common.TextValue;
     "steps",
     "via_waypoint"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Leg {
 
     @JsonProperty("distance")
@@ -43,8 +40,6 @@ public class Leg {
     private List<Step> steps = new ArrayList<Step>();
     @JsonProperty("via_waypoint")
     private List<Object> viaWaypoint = new ArrayList<Object>();
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("distance")
     public TextValue getDistance() {
@@ -126,14 +121,11 @@ public class Leg {
         this.viaWaypoint = viaWaypoint;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "Leg [distance=" + distance + ", duration=" + duration + ", endAddress=" + endAddress + ", endLocation=" + endLocation
+				+ ", startAddress=" + startAddress + ", startLocation=" + startLocation + ", steps=" + steps + ", viaWaypoint="
+				+ viaWaypoint + "]";
+	}
 
 }

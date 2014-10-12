@@ -2,12 +2,8 @@
 package org.openweathermap.api.forecast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.openweathermap.api.common.City;
@@ -19,6 +15,7 @@ import org.openweathermap.api.common.City;
     "cnt",
     "list"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ForecastResponse {
 
     @JsonProperty("cod")
@@ -31,8 +28,6 @@ public class ForecastResponse {
     private long cnt;
     @JsonProperty("list")
     private java.util.List<org.openweathermap.api.common.WeatherDataPoint> list = new ArrayList<org.openweathermap.api.common.WeatherDataPoint>();
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("cod")
     public String getCod() {
@@ -84,14 +79,9 @@ public class ForecastResponse {
         this.list = list;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "ForecastResponse [cod=" + cod + ", message=" + message + ", city=" + city + ", cnt=" + cnt + ", list=" + list + "]";
+	}
 
 }

@@ -2,13 +2,9 @@
 package org.openweathermap.api.weather;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.openweathermap.api.common.Clouds;
@@ -31,6 +27,7 @@ import org.openweathermap.api.common.Wind;
     "name",
     "cod"
 })
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CurrentWeatherResponse {
 
     @JsonProperty("coord")
@@ -55,8 +52,6 @@ public class CurrentWeatherResponse {
     private String name;
     @JsonProperty("cod")
     private long cod;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("coord")
     public Coord getCoord() {
@@ -168,14 +163,10 @@ public class CurrentWeatherResponse {
         this.cod = cod;
     }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+	@Override
+	public String toString() {
+		return "CurrentWeatherResponse [coord=" + coord + ", sys=" + sys + ", weather=" + weather + ", base=" + base + ", main=" + main
+				+ ", wind=" + wind + ", clouds=" + clouds + ", dt=" + dt + ", id=" + id + ", name=" + name + ", cod=" + cod + "]";
+	}
 
 }
