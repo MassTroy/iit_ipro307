@@ -1,11 +1,11 @@
 <%@page import="common.util.RoundingUtil"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="iit.ipro497.domain.data.RouteData"%>
+<%@page import="iit.ipro497.domain.data.RouteSummary"%>
 <%@page import="java.util.List"%>
 <%@page import="iit.ipro497.thermal.model.DisplayModel"%>
 <%
 DisplayModel model = (DisplayModel)request.getAttribute("model");
-List<RouteData> routeList = new ArrayList<RouteData>();
+List<RouteSummary> routeList = new ArrayList<RouteSummary>();
 if (model != null && model.getRouteList() != null) {
 	routeList = model.getRouteList();
 }
@@ -29,11 +29,11 @@ final int DECIMALS = 1;
 				</tr>
 			</thead>
 			<tbody>
-				<% for (RouteData route : routeList) { %>
+				<% for (RouteSummary route : routeList) { %>
 				<tr>
 					<td><a href=#><%= route.getTitle() %></a></td>
-					<td><%= route.getArrivalTime() %></td>
-					<td><%= route.getDuration() %></td>
+					<td><%=route.getArrivalTimeString()%></td>
+					<td><%=route.getDurationString()%></td>
 					<td><%= route.getMiles() %> miles</td>
 					<!--<td>???</td>-->
 					<td><%= RoundingUtil.round(route.getMinTemp(), DECIMALS) %></td>

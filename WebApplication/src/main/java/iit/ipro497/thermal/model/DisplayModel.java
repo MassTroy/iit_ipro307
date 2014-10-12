@@ -1,18 +1,18 @@
 package iit.ipro497.thermal.model;
 
-import iit.ipro497.domain.data.RouteData;
+import iit.ipro497.domain.data.RouteSummary;
 
 import java.util.List;
 
 public class DisplayModel {
 	FormData form;
-	List<RouteData> routeList;
+	List<RouteSummary> routeList;
 	// TODO: add google maps route data
 
 	public DisplayModel() {
 	}
 
-	public DisplayModel(FormData form, List<RouteData> routeList) {
+	public DisplayModel(FormData form, List<RouteSummary> routeList) {
 		this.form = form;
 		this.routeList = routeList;
 	}
@@ -25,11 +25,11 @@ public class DisplayModel {
 		this.form = form;
 	}
 
-	public List<RouteData> getRouteList() {
+	public List<RouteSummary> getRouteList() {
 		return routeList;
 	}
 
-	public void setRouteList(List<RouteData> routeList) {
+	public void setRouteList(List<RouteSummary> routeList) {
 		this.routeList = routeList;
 	}
 
