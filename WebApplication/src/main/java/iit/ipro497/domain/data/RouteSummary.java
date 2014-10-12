@@ -11,13 +11,15 @@ public class RouteSummary {
 	private final Date arrive;
 	private final double miles;
 	private final TemperatureSummary temperatureSummary;
+	private final TemperatureUnit unit;
 
-	public RouteSummary(Route route, TemperatureSummary temperatureSummary) {
+	public RouteSummary(Route route, TemperatureSummary temperatureSummary, TemperatureUnit unit) {
 		this.title = route.getSummary();
 		this.depart = route.getDepart();
 		this.arrive = route.getArrive();
 		this.miles = route.getMiles();
 		this.temperatureSummary = temperatureSummary;
+		this.unit = unit;
 	}
 
 	public String getTitle() {
@@ -37,23 +39,23 @@ public class RouteSummary {
 	}
 
 	public TemperatureUnit getTempUnit() {
-		return temperatureSummary.getTempUnit();
+		return unit;
 	}
 
 	public double getMinTemp() {
-		return temperatureSummary.getMinTemp();
+		return temperatureSummary.getMinTemp().getTemperature(unit);
 	}
 
 	public double getMaxTemp() {
-		return temperatureSummary.getMaxTemp();
+		return temperatureSummary.getMaxTemp().getTemperature(unit);
 	}
 
 	public double getFinalTemp() {
-		return temperatureSummary.getFinalTemp();
+		return temperatureSummary.getFinalTemp().getTemperature(unit);
 	}
 
 	public double getAverageTemp() {
-		return temperatureSummary.getAverageTemp();
+		return temperatureSummary.getAverageTemp().getTemperature(unit);
 	}
 
 	@Override

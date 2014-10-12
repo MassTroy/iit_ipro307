@@ -1,43 +1,37 @@
 package iit.ipro497.domain.data;
 
 public class TemperatureSummary {
-	private final TemperatureUnit tempUnit;
-	private final double minTemp;
-	private final double maxTemp;
-	private final double finalTemp;
-	private final double averageTemp;
+	private final Temperature minTemp;
+	private final Temperature maxTemp;
+	private final Temperature finalTemp;
+	private final Temperature averageTemp;
 
-	public TemperatureSummary(TemperatureUnit tempUnit, double minTemp, double maxTemp, double finalTemp, double averageTemp) {
-		this.tempUnit = tempUnit;
+	public TemperatureSummary(Temperature minTemp, Temperature maxTemp, Temperature finalTemp, Temperature averageTemp) {
 		this.minTemp = minTemp;
 		this.maxTemp = maxTemp;
 		this.finalTemp = finalTemp;
 		this.averageTemp = averageTemp;
 	}
 
-	public TemperatureUnit getTempUnit() {
-		return tempUnit;
-	}
-
-	public double getMinTemp() {
+	public Temperature getMinTemp() {
 		return minTemp;
 	}
 
-	public double getMaxTemp() {
+	public Temperature getMaxTemp() {
 		return maxTemp;
 	}
 
-	public double getFinalTemp() {
+	public Temperature getFinalTemp() {
 		return finalTemp;
 	}
 
-	public double getAverageTemp() {
+	public Temperature getAverageTemp() {
 		return averageTemp;
 	}
 
 	@Override
 	public String toString() {
-		return "TemperatureSummary [tempUnit=" + tempUnit + ", minTemp=" + minTemp + ", maxTemp=" + maxTemp + ", finalTemp=" + finalTemp
+		return "TemperatureSummary [minTemp=" + minTemp + ", maxTemp=" + maxTemp + ", finalTemp=" + finalTemp
 				+ ", averageTemp=" + averageTemp + "]";
 	}
 

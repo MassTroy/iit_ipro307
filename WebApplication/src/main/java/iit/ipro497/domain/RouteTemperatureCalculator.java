@@ -3,10 +3,10 @@ package iit.ipro497.domain;
 import iit.ipro497.domain.client.OpenWeatherMapClient;
 import iit.ipro497.domain.data.Route;
 import iit.ipro497.domain.data.RouteSegment;
+import iit.ipro497.domain.data.Temperature;
 import iit.ipro497.domain.data.TemperatureSummary;
 import iit.ipro497.domain.data.WeatherData;
 import iit.ipro497.exception.BadRequestException;
-import iit.ipro497.thermal.model.FormData;
 
 import java.util.Date;
 
@@ -24,12 +24,12 @@ public class RouteTemperatureCalculator {
 	@Autowired
 	private SegmentTemperatureCalculator segmentTemperatureCalculator;
 
-	public TemperatureSummary computeTempertature(Route route, FormData form) throws BadRequestException {
-		double minTemp = form.getStartTemp();
-		double maxTemp = form.getStartTemp();
-		double averageTemp = form.getStartTemp();
+	public TemperatureSummary computeTempertature(Route route, Temperature startingTemp) throws BadRequestException {
+		double minTemp = startingTemp.getCelcius();
+		double maxTemp = startingTemp.getCelcius();
+		double averageTemp = startingTemp.getCelcius();
 		long duration = 0;
-		double currentTemp = form.getStartTemp();
+		Temperature currentTemp = startingTemp;
 		
 		for (RouteSegment segment : route.getSegments()) {
 			WeatherData weather = openWeatherMapClient.getWeather(segment.getEndLocation(), new Date());
@@ -37,15 +37,15 @@ public class RouteTemperatureCalculator {
 			currentTemp = segmentTemperatureCalculator.computeFinalTemp(currentTemp, weather, segmentDuration);
 			
 			// update temperature data
-			if (currentTemp < minTemp)
-				minTemp = currentTemp;
-			if (currentTemp > maxTemp)
-				maxTemp = currentTemp;
-			averageTemp = ((averageTemp * duration) + (currentTemp * segmentDuration)) / (duration + segmentDuration);
+			if (currentTemp.getCelcius() < minTemp)
+				minTemp = currentTemp.getCelcius();
+			if (currentTemp.getCelcius() > maxTemp)
+				maxTemp = currentTemp.getCelcius();
+			averageTemp = ((averageTemp * duration) + (currentTemp.getCelcius() * segmentDuration)) / (duration + segmentDuration);
 			duration += segmentDuration;
 		}
 
-		TemperatureSummary tempSummary = new TemperatureSummary(form.getUnit(), minTemp, maxTemp, currentTemp, averageTemp);
+		TemperatureSummary tempSummary = new TemperatureSummary(new Temperature(minTemp), new Temperature(maxTemp), currentTemp, new Temperature(averageTemp));
 		return tempSummary;
 	}
 

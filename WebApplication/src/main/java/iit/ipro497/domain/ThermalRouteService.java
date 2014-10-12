@@ -3,6 +3,7 @@ package iit.ipro497.domain;
 import iit.ipro497.domain.client.GoogleDirectionsClient;
 import iit.ipro497.domain.data.Route;
 import iit.ipro497.domain.data.RouteSummary;
+import iit.ipro497.domain.data.Temperature;
 import iit.ipro497.domain.data.TemperatureSummary;
 import iit.ipro497.exception.BadRequestException;
 import iit.ipro497.thermal.model.FormData;
@@ -42,8 +43,8 @@ public class ThermalRouteService {
 		// compute thermal information for route
 		List<RouteSummary> routeSummaryList = new ArrayList<RouteSummary>();
 		for (Route reduced : reducedRouteList) {
-			TemperatureSummary tempuratureSummary = routeTemperatureCalculator.computeTempertature(reduced, form);
-			RouteSummary routeSummary = new RouteSummary(reduced, tempuratureSummary);
+			TemperatureSummary tempuratureSummary = routeTemperatureCalculator.computeTempertature(reduced, new Temperature(form.getStartTemp(), form.getUnit()));
+			RouteSummary routeSummary = new RouteSummary(reduced, tempuratureSummary, form.getUnit());
 			routeSummaryList.add(routeSummary);
 		}
 

@@ -8,54 +8,35 @@ import org.openweathermap.api.common.Sys;
 import org.openweathermap.api.common.Wind;
 
 public class WeatherData {
-	// NOTE: all units are in metric
-	// celcius, meters per second, or percentage
-	
-	private final double temperature;
+	private final Temperature temperature;
 	private final double pressure;
-	private final int humidity;
-	private final double tempMin;
-	private final double tempMax;
-	private final double windSpeed;
+	private final Percentage humidity;
+	private final Temperature tempMin;
+	private final Temperature tempMax;
+	private final Speed windSpeed;
 	private final int windDirection;
-	private final int skyCover;
+	private final Percentage skyCover;
 	private final Date date;
 	private final String name;
 	private final Date sunrise;
 	private final Date sunset;
 
 	public WeatherData(Sys sys, Main main, Wind wind, Clouds clouds, long dt, String name) {
-		this.temperature = main.getTemp();
+		this.temperature = new Temperature(main.getTemp());
 		this.pressure = main.getPressure();
-		this.humidity = (int) main.getHumidity();
-		this.tempMin = main.getTempMin();
-		this.tempMax = main.getTempMax();
-		this.windSpeed = wind.getSpeed();
+		this.humidity = new Percentage(main.getHumidity());
+		this.tempMin = new Temperature(main.getTempMin());
+		this.tempMax = new Temperature(main.getTempMax());
+		this.windSpeed = new Speed(wind.getSpeed());
 		this.windDirection = (int) wind.getDeg();
-		this.skyCover = (int) clouds.getAll();
+		this.skyCover = new Percentage(clouds.getAll());
 		this.date = new Date(dt*1000L);
 		this.name = name;
 		this.sunrise = new Date(sys.getSunrise()*1000L);
 		this.sunset = new Date(sys.getSunset()*1000L);
 	}
-	
-	public WeatherData(double temperature, double pressure, int humidity, double tempMin, double tempMax, double windSpeed,
-			int windDirection, int skyCover, Date date, String name, Date sunrise, Date sunset) {
-		this.temperature = temperature;
-		this.pressure = pressure;
-		this.humidity = humidity;
-		this.tempMin = tempMin;
-		this.tempMax = tempMax;
-		this.windSpeed = windSpeed;
-		this.windDirection = windDirection;
-		this.skyCover = skyCover;
-		this.date = date;
-		this.name = name;
-		this.sunrise = sunrise;
-		this.sunset = sunset;
-	}
 
-	public double getTemperature() {
+	public Temperature getTemperature() {
 		return temperature;
 	}
 
@@ -63,19 +44,19 @@ public class WeatherData {
 		return pressure;
 	}
 
-	public int getHumidity() {
+	public Percentage getHumidity() {
 		return humidity;
 	}
 
-	public double getTempMin() {
+	public Temperature getTempMin() {
 		return tempMin;
 	}
 
-	public double getTempMax() {
+	public Temperature getTempMax() {
 		return tempMax;
 	}
 
-	public double getWindSpeed() {
+	public Speed getWindSpeed() {
 		return windSpeed;
 	}
 
@@ -83,7 +64,7 @@ public class WeatherData {
 		return windDirection;
 	}
 
-	public int getSkyCover() {
+	public Percentage getSkyCover() {
 		return skyCover;
 	}
 
