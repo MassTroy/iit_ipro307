@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,10 +17,14 @@ import com.google.maps.api.directions.DirectionsResponse;
 import com.google.maps.api.directions.Leg;
 import com.google.maps.api.directions.Step;
 import common.util.DateOffsetCalculator;
+import common.util.PrefixLogger;
 
 @Service
 public class GoogleDirectionsClient {
 	private static final String API_DIRECTIONS_URL = "https://maps.googleapis.com/maps/api/directions/json?alternatives=true&";
+
+	@Autowired
+	private PrefixLogger log;
 
 	public List<Route> getDirections(String origin, String destination) throws BadRequestException {
 		String url = API_DIRECTIONS_URL
@@ -31,6 +36,7 @@ public class GoogleDirectionsClient {
 	}
 
 	private List<Route> getRoutes(String url) throws BadRequestException {
+		log.debug("Getting google directions. url=" + url);
 		RestTemplate restTemplate = new RestTemplate();
 		DirectionsResponse resp = restTemplate.getForObject(url, DirectionsResponse.class);
 

@@ -6,10 +6,16 @@ import iit.ipro497.thermal.model.FormData;
 
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import common.util.PrefixLogger;
 
 @Service
 public class RouteTemperatureCalculator {
+	@Autowired
+	private PrefixLogger log;
+	
 	Random random = new Random();
 
 	public TemperatureSummary computeTempertature(Route reduced, FormData form) {

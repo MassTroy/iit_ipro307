@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import common.util.DistanceConverter;
+import common.util.PrefixLogger;
 
 @Service
 public class ThermalRouteService {
@@ -23,6 +24,8 @@ public class ThermalRouteService {
 	private RouteReducer routeReducer;
 	@Autowired
 	private RouteTemperatureCalculator routeTemperatureCalculator;
+	@Autowired
+	private PrefixLogger log;
 
 	public List<RouteSummary> findRoutes(FormData form) throws BadRequestException {
 		// get directions from google
@@ -32,7 +35,7 @@ public class ThermalRouteService {
 		// reduce routes
 		List<Route> reducedRouteList = new ArrayList<Route>();
 		for (Route route : routeList) {
-			Route reducedRoute = routeReducer.reduceRoute(route, DistanceConverter.milesToMeters(50));
+			Route reducedRoute = routeReducer.reduceRoute(route, DistanceConverter.milesToMeters(100));
 			reducedRouteList.add(reducedRoute);
 		}
 
