@@ -1,4 +1,5 @@
 package iit.ipro497.persistence;
+
 // Generated Oct 8, 2014 3:19:23 PM by Hibernate Tools 4.0.0
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -22,12 +23,12 @@ import javax.persistence.Table;
 @Table(name = "intersection_coord")
 public class IntersectionCoord implements Serializable {
 	private static final long serialVersionUID = 2330739226231893695L;
-	
+
 	private long intersectionId;
 	private String name;
 	private double latitude;
 	private double longitude;
-	
+
 	private Set<WeatherCache> weatherCaches = new HashSet<WeatherCache>(0);
 
 	IntersectionCoord() {

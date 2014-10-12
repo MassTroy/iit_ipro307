@@ -28,7 +28,7 @@ public class ThermalRouteService {
 		// get directions from google
 		List<Route> routeList = googleDirectionsClient.getDirections(form.getOrigin(), form.getDestination());
 		// TODO: get directions with waypoints
-		
+
 		// reduce routes
 		List<Route> reducedRouteList = new ArrayList<Route>();
 		for (Route route : routeList) {
@@ -43,7 +43,7 @@ public class ThermalRouteService {
 			RouteSummary routeSummary = new RouteSummary(reduced, tempuratureSummary);
 			routeSummaryList.add(routeSummary);
 		}
-		
+
 		return routeSummaryList;
 	}
 

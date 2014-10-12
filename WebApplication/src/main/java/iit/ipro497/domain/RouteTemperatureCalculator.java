@@ -18,13 +18,13 @@ public class RouteTemperatureCalculator {
 		double maxTemp = randomDouble(51, 110);
 		double finalTemp = randomDouble(minTemp, maxTemp);
 		double averageTemp = randomDouble(minTemp, maxTemp);
-		
+
 		TemperatureSummary tempSummary = new TemperatureSummary(form.getUnit(), minTemp, maxTemp, finalTemp, averageTemp);
 		return tempSummary;
 	}
 
 	private double randomDouble(double min, double max) {
-		return (random.nextDouble() * (max-min)) + min;
+		return (random.nextDouble() * (max - min)) + min;
 	}
 
 }

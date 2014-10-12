@@ -1,4 +1,5 @@
 package iit.ipro497.persistence.dao;
+
 // Generated Oct 8, 2014 3:19:24 PM by Hibernate Tools 4.0.0
 
 import iit.ipro497.persistence.IntersectionCoord;

@@ -5,7 +5,6 @@ import java.util.Date;
 import common.util.DateDurationCalculator;
 import common.util.DateFormatter;
 
-
 public class RouteSummary {
 	private final String title;
 	private final Date depart;
@@ -55,5 +54,11 @@ public class RouteSummary {
 
 	public double getAverageTemp() {
 		return temperatureSummary.getAverageTemp();
+	}
+
+	@Override
+	public String toString() {
+		return "RouteSummary [title=" + title + ", depart=" + depart + ", arrive=" + arrive + ", miles=" + miles + ", temperatureSummary="
+				+ temperatureSummary + "]";
 	}
 }

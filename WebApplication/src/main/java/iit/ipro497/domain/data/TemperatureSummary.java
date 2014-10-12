@@ -6,7 +6,7 @@ public class TemperatureSummary {
 	private final double maxTemp;
 	private final double finalTemp;
 	private final double averageTemp;
-	
+
 	public TemperatureSummary(TemperatureUnit tempUnit, double minTemp, double maxTemp, double finalTemp, double averageTemp) {
 		this.tempUnit = tempUnit;
 		this.minTemp = minTemp;

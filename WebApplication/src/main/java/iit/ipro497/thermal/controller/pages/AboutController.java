@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AboutController extends AbstractController {
 
-	@RequestMapping(value = {"/about"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/about" }, method = RequestMethod.GET)
 	public ModelAndView about() {
 		return new ModelAndView("about");
 	}

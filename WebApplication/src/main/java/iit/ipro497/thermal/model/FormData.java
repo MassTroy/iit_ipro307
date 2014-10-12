@@ -5,14 +5,14 @@ import iit.ipro497.domain.data.TemperatureUnit;
 public class FormData {
 	private static final Double DEFAULT_START_F = 65.0;
 	private static final Double DEFAULT_START_C = 20.0;
-	
+
 	String origin;
 	String destination;
 	Double startTemp;
 	TemperatureUnit unit;
 	Double minTemp;
 	Double maxTemp;
-	
+
 	public FormData() {
 	}
 

@@ -7,6 +7,7 @@ import java.util.List;
 public class DisplayModel {
 	FormData form;
 	List<RouteSummary> routeList;
+
 	// TODO: add google maps route data
 
 	public DisplayModel() {

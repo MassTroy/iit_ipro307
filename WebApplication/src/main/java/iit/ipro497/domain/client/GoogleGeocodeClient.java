@@ -20,18 +20,18 @@ public class GoogleGeocodeClient {
 		RestTemplate restTemplate = new RestTemplate();
 		GeocodingResponse resp = restTemplate.getForObject(reqUrl, GeocodingResponse.class);
 
-		if (	resp != null &&
+		if (resp != null &&
 				resp.getResults() != null && resp.getResults().size() >= 1 &&
 				resp.getResults().get(0) != null &&
 				resp.getResults().get(0).getGeometry() != null &&
 				resp.getResults().get(0).getGeometry().getLocation() != null &&
 				resp.getStatus() != null &&
 				resp.getStatus().equals("OK")) {
-			
+
 			Location location = resp.getResults().get(0).getGeometry().getLocation();
 			return new GeoCoordinate(location);
 		}
-		
+
 		throw new BadRequestException("Invalid request to google geocode api. locationName=" + locationName);
 	}
 }

@@ -13,7 +13,7 @@ public class IndexController extends AbstractController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mav;
-		
+
 		if (session.getAttribute(FORM_ATTRIBUTE) == null) {
 			mav = new ModelAndView("index");
 		} else {

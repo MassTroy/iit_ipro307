@@ -20,12 +20,12 @@ public class DisplayController extends AbstractController {
 	@Autowired
 	private ThermalRouteService routeFinder;
 
-	@RequestMapping(value = {"/display"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/display" }, method = RequestMethod.GET)
 	public ModelAndView display() throws BadRequestException {
-		FormData form = (FormData)session.getAttribute(FORM_ATTRIBUTE);
+		FormData form = (FormData) session.getAttribute(FORM_ATTRIBUTE);
 		if (form == null)
 			return new ModelAndView("redirect:./");
-		
+
 		List<RouteSummary> routeList;
 		routeList = routeFinder.findRoutes(form);
 		DisplayModel model = new DisplayModel(form, routeList);

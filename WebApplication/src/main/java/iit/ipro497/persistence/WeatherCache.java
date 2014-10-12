@@ -1,4 +1,5 @@
 package iit.ipro497.persistence;
+
 // Generated Oct 8, 2014 3:19:23 PM by Hibernate Tools 4.0.0
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -24,7 +25,7 @@ import javax.persistence.TemporalType;
 @Table(name = "weather_cache")
 public class WeatherCache implements Serializable {
 	private static final long serialVersionUID = -8491452161329569976L;
-	
+
 	private Long weatherCacheId;
 	private IntersectionCoord intersectionCoord;
 	private Date dateUpdated;

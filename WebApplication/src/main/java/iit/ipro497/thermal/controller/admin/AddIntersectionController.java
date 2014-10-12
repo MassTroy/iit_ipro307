@@ -22,12 +22,12 @@ public class AddIntersectionController extends AbstractController {
 	@Autowired
 	private GoogleGeocodeClient googleGeocodeClient;
 
-	@RequestMapping(value = {"/addIntersection"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/addIntersection" }, method = RequestMethod.GET)
 	@Transactional(readOnly = false)
 	@ResponseBody
 	public GeoCoordinate addIntersectionLocation(
-			@RequestParam(value= "locationName", required = true) String locationName) throws BadRequestException {
-		
+			@RequestParam(value = "locationName", required = true) String locationName) throws BadRequestException {
+
 		IntersectionCoord intersection = intersectionCoordDAO.findByName(locationName);
 		GeoCoordinate coordinate = null;
 		if (intersection == null) {
@@ -37,7 +37,7 @@ public class AddIntersectionController extends AbstractController {
 		} else {
 			coordinate = new GeoCoordinate(intersection.getLatitude(), intersection.getLongitude());
 		}
-		
+
 		return coordinate;
 	}
 

@@ -8,14 +8,14 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 
 public abstract class AbstractController {
 	public static final String FORM_ATTRIBUTE = "form";
-	
-	@Autowired 
+
+	@Autowired
 	protected AutowireCapableBeanFactory beanFactory;
 	@Autowired
 	protected HttpServletRequest request;
 	@Autowired
 	protected HttpSession session;
-	
+
 	protected String getPreviousPage() {
 		return request.getHeader("referer");
 	}

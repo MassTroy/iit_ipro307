@@ -12,15 +12,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PostFormController extends AbstractController {
 
-	@RequestMapping(value = {"/submit"}, method = RequestMethod.POST)
+	@RequestMapping(value = { "/submit" }, method = RequestMethod.POST)
 	public ModelAndView display(
 			@ModelAttribute FormData form
 			) {
 		form.validate();
-		
+
 		session.setAttribute(FORM_ATTRIBUTE, form);
 		ModelAndView mav = new ModelAndView("redirect:/display");
-		
+
 		return mav;
 	}
 

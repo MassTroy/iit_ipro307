@@ -12,7 +12,7 @@ public class Route {
 	private final Date depart;
 	private final Date arrive;
 	private final List<RouteSegment> segments;
-	
+
 	public Route(com.google.maps.api.directions.Route route, Date depart, Date arrive, List<RouteSegment> segments) {
 		this.summary = route.getSummary();
 		this.copyrights = route.getCopyrights();
@@ -55,5 +55,11 @@ public class Route {
 
 	public List<RouteSegment> getSegments() {
 		return segments;
+	}
+
+	@Override
+	public String toString() {
+		return "Route [summary=" + summary + ", copyrights=" + copyrights + ", depart=" + depart + ", arrive=" + arrive + ", segments="
+				+ segments + "]";
 	}
 }

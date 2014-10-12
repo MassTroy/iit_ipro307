@@ -40,8 +40,8 @@ public class RouteSegment {
 
 	@Override
 	public String toString() {
-		return "RoutePoint [distance=" + distanceMeters + ", duration=" + durationSeconds + ", startLocation=" + startLocation + ", endLocation="
-				+ endLocation + "]";
+		return "RouteSegment [distanceMeters=" + distanceMeters + ", durationSeconds=" + durationSeconds + ", startLocation="
+				+ startLocation + ", endLocation=" + endLocation + "]";
 	}
 
 }
