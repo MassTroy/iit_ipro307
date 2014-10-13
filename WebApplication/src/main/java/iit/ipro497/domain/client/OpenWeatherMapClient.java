@@ -45,7 +45,7 @@ public class OpenWeatherMapClient {
 		CurrentWeatherResponse resp = restTemplate.getForObject(url, CurrentWeatherResponse.class);
 		
 		if (resp != null) {
-			WeatherData weather = new WeatherData(resp.getSys(), resp.getMain(), resp.getWind(), resp.getClouds(), resp.getDt(), resp.getName());
+			WeatherData weather = new WeatherData(resp.getSys(), resp.getMain(), resp.getWind(), resp.getClouds(), resp.getName());
 			log.trace("Got weather. weather=" + weather);
 			return weather;
 		}

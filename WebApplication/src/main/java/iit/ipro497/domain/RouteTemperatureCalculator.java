@@ -43,6 +43,7 @@ public class RouteTemperatureCalculator {
 				maxTemp = currentTemp.getCelcius();
 			averageTemp = ((averageTemp * duration) + (currentTemp.getCelcius() * segmentDuration)) / (duration + segmentDuration);
 			duration += segmentDuration;
+			log.debug("Temperature after segment. celcius=" + currentTemp.getCelcius());
 		}
 
 		TemperatureSummary tempSummary = new TemperatureSummary(new Temperature(minTemp), new Temperature(maxTemp), currentTemp, new Temperature(averageTemp));
