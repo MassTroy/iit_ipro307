@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>PassiveThermalPom</artifactId>
-		<groupId>iit.ipro497</groupId>
+		<groupId>iit.ipro307</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
@@ -63,12 +63,12 @@
 	<dependencies>
 		<!-- Project dependencies -->
 		<dependency>
-			<groupId>iit.ipro497</groupId>
+			<groupId>iit.ipro307</groupId>
 			<artifactId>GoogleMaps_API</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>iit.ipro497</groupId>
+			<groupId>iit.ipro307</groupId>
 			<artifactId>OpenWeatherMap_API</artifactId>
 			<version>${project.version}</version>
 		</dependency>

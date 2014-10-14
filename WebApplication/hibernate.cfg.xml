@@ -7,8 +7,8 @@
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
-		<property name="hibernate.connection.url">jdbc:mysql://troymass.redirectme.net:3306/ipro497</property>
-		<property name="hibernate.connection.username">ipro497_app</property>
+		<property name="hibernate.connection.url">jdbc:mysql://troymass.redirectme.net:3306/ipro307</property>
+		<property name="hibernate.connection.username">ipro307_app</property>
 		<property name="hibernate.connection.password">GNr8xJJGbDhPa4nf</property>
 		<property name="show_sql">false</property>
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>

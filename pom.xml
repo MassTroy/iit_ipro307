@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>iit.ipro497</groupId>
+	<groupId>iit.ipro307</groupId>
 	<artifactId>PassiveThermalPom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Passive Thermal - Top Level Pom</name>
 
 	<scm>
-		<connection>scm:git:git@bitbucket.org:tmass/ipro497.git</connection>
-		<developerConnection>scm:git:git@bitbucket.org:tmass/ipro497.git</developerConnection>
-		<url>https://bitbucket.org/tmass/ipro497</url>
+		<connection>scm:git:git@bitbucket.org:tmass/ipro307.git</connection>
+		<developerConnection>scm:git:git@bitbucket.org:tmass/ipro307.git</developerConnection>
+		<url>https://bitbucket.org/tmass/ipro307</url>
 		<tag>HEAD</tag>
 	</scm>
 

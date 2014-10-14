@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 
-	<category name="ipro497">
+	<category name="ipro307">
 		<priority value="DEBUG" />
 	</category>
 

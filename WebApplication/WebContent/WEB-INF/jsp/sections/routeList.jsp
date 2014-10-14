@@ -1,8 +1,8 @@
 <%@page import="common.util.RoundingUtil"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="iit.ipro497.domain.data.RouteSummary"%>
+<%@page import="iit.ipro307.domain.data.RouteSummary"%>
 <%@page import="java.util.List"%>
-<%@page import="iit.ipro497.thermal.model.DisplayModel"%>
+<%@page import="iit.ipro307.thermal.model.DisplayModel"%>
 <%
 DisplayModel model = (DisplayModel)request.getAttribute("model");
 List<RouteSummary> routeList = new ArrayList<RouteSummary>();

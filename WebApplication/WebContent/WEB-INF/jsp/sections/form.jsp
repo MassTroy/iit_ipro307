@@ -1,7 +1,7 @@
 <%@page import="java.text.Normalizer.Form"%>
-<%@page import="iit.ipro497.domain.data.TemperatureUnit"%>
-<%@page import="iit.ipro497.thermal.model.FormData"%>
-<%@page import="iit.ipro497.thermal.model.DisplayModel"%>
+<%@page import="iit.ipro307.domain.data.TemperatureUnit"%>
+<%@page import="iit.ipro307.thermal.model.FormData"%>
+<%@page import="iit.ipro307.thermal.model.DisplayModel"%>
 <%
 DisplayModel model = (DisplayModel)request.getAttribute("model");
 String origin = "";

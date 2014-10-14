@@ -1,4 +1,4 @@
-<%@page import="iit.ipro497.thermal.model.DisplayModel"%>
+<%@page import="iit.ipro307.thermal.model.DisplayModel"%>
 <%
 DisplayModel model = (DisplayModel)request.getAttribute("model");
 String origin = "";
