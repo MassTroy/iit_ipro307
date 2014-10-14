@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>iit.ipro307</groupId>
 	<artifactId>PassiveThermalPom</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Passive Thermal - Top Level Pom</name>
 
@@ -10,7 +10,7 @@
 		<connection>scm:git:git@bitbucket.org:tmass/ipro307.git</connection>
 		<developerConnection>scm:git:git@bitbucket.org:tmass/ipro307.git</developerConnection>
 		<url>https://bitbucket.org/tmass/ipro307</url>
-		<tag>v0.0.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<build>

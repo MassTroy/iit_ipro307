@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>PassiveThermalPom</artifactId>
 		<groupId>iit.ipro307</groupId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>GoogleMaps_API</artifactId>
