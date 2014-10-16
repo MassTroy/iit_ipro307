@@ -13,7 +13,22 @@ import common.util.PrefixLogger;
 
 @Service
 public class SegmentTemperatureCalculator {
-	private static final double SOLAR_CONSTANT = 7.0/60.0/60.0; // 7 degrees per hour at full strength
+	private static final double mass = 3500;
+	private static final double specificHeat = 490;
+	private static final double area = 101.0785;
+	// convection
+	private static final double rhoAir = 1.184;
+	private static final double velocity = 24.5872; // 55 mph
+	private static final double length = 12.192;
+	private static final double muAir = 1.983e5;
+	private static final double reynolds = (rhoAir * velocity * length) / muAir;
+	private static final double lp = 1005.0;
+	private static final double kAir = 0.0257;
+	private static final double pressure = (lp * muAir) / kAir;
+	private static final double nusselt = 0.037 * Math.pow(reynolds, 0.8) * Math.pow(pressure, 1.0/3.0);
+	// conduction
+	final double kw = 16;
+	final double deltaX = 0.00478;
 	
 	@Autowired
 	private PrefixLogger log;
@@ -25,7 +40,9 @@ public class SegmentTemperatureCalculator {
 
 		finalTemp += convection(currentTemp, weather, duration);
 		
-		finalTemp += radiationEffect(weather, duration, new Date());
+		//finalTemp += conduction(currentTemp, weather, duration);
+		
+		finalTemp += solarRadiation(weather, duration, new Date());
 		
 		finalTemp += rainEffect(weather, duration);
 		
@@ -33,56 +50,59 @@ public class SegmentTemperatureCalculator {
 	}
 
 	private double convection(Temperature currentTemp, WeatherData weather, long duration) {
-		// constants
-		final double pAir = 1.184;
-		final double v = 24.5872; // 55 mph
-		final double l = 12.192;
-		final double uAir = 1.983 * 10000;
-		final double re = (pAir * v * l) / uAir;
-		final double lp = 1005.0;
-		final double kAir = 0.0257;
-		final double pr = (lp * uAir) / kAir;
-		final double nu = 0.037 * Math.pow(re, 0.8) * Math.pow(pr, 1.0/3.0);
-		final double aw = 101.0785;
-		final double mass = 3500;
-		final double specificHeat = 490;
-		
 		// inputs
 		final double tempOutside = weather.getTemperature().getKelvin();
 		final double tempCurrent = currentTemp.getKelvin();
 		
 		// calcuations
-		final double convectionWatts = nu * kAir * aw * (tempOutside - tempCurrent);
-		final double convectionDelta = (duration / (mass * specificHeat)) * convectionWatts;
+		final double convectionWatts = nusselt * kAir * area * (tempOutside - tempCurrent);
+		final double convectionDelta = (duration * convectionWatts) / (mass * specificHeat);
 		
 		return convectionDelta;
 	}
 
-	private double radiationEffect(WeatherData weather, long duration, Date date) {
-		// TODO: solar radiation effects
-		double solarDelta;
+	private double conduction(Temperature currentTemp, WeatherData weather, long duration) {
+		// inputs
+		final double tempOutside = weather.getTemperature().getKelvin();
+		final double tempCurrent = currentTemp.getKelvin();
 		
-		long sunrise = weather.getSunrise().getTime();
-		long sunset = weather.getSunset().getTime();
-		long current = date.getTime();
+		// calcuations
+		final double conductionWatts = (kw * area * (tempOutside - tempCurrent)) / deltaX;
+		final double conductionDelta = (duration * conductionWatts) / (mass * specificHeat);
+
+		log.debug("Conduction delta temp. celcius=" + conductionDelta);
+		return conductionDelta;
+	}
+
+	private double solarRadiation(WeatherData weather, long duration, Date date) {
+		final long sunrise = weather.getSunrise().getTime();
+		final long sunset = weather.getSunset().getTime();
+		final long current = date.getTime();
+		
+		final double solarDelta;
 		
 		if (current < sunset && current > sunrise) {
 			// day time
-			double skyCover = weather.getSkyCover().getPercentageMultiplier();
 			
+			// inputs
 			// TODO: include latitude
-			double solarAngle = Math.PI * (current - sunrise) / (sunset - sunrise);
-			solarDelta = SOLAR_CONSTANT * Math.sin(solarAngle) * (1 - skyCover) * duration;
+			final double solarAngle = Math.PI * (current - sunrise) / (sunset - sunrise);
+			final double skyCover = weather.getSkyCover().getPercentageMultiplier();
+			
+			// calcuations
+			final double r0 = 990 * Math.sin(solarAngle) - 30;
+			final double solarWatts = r0 * (1 - (0.75 * Math.pow(skyCover, 3.4)));
+			
+			solarDelta = (duration * solarWatts) / (mass * specificHeat);
 		} else {
 			// night time
 			// TODO: outgoing radiation effect
 			solarDelta = 0;
 		}
 		
-		log.debug("Solar delta temp. celcius=" + solarDelta);
 		return solarDelta;
 	}
-
+	
 	private double rainEffect(WeatherData weather, long duration) {
 		// TODO: rain effects
 		return 0;
