@@ -23,7 +23,7 @@ public class SegmentTemperatureCalculator {
 	public Temperature computeFinalTemp(Temperature currentTemp, WeatherData weather, long duration) {
 		double finalTemp = currentTemp.getCelcius();
 
-		finalTemp += ambientEffect(currentTemp, weather, duration);
+		finalTemp += convection(currentTemp, weather, duration);
 		
 		finalTemp += radiationEffect(weather, duration, new Date());
 		
@@ -32,18 +32,30 @@ public class SegmentTemperatureCalculator {
 		return new Temperature(finalTemp);
 	}
 
-	private double ambientEffect(Temperature currentTemp, WeatherData weather, long duration) {
-		// TODO: ambient temperature effects
-		// TODO: wind effect
+	private double convection(Temperature currentTemp, WeatherData weather, long duration) {
+		// constants
+		final double pAir = 1.184;
+		final double v = 24.5872; // 55 mph
+		final double l = 12.192;
+		final double uAir = 1.983 * 10000;
+		final double re = (pAir * v * l) / uAir;
+		final double lp = 1005.0;
+		final double kAir = 0.0257;
+		final double pr = (lp * uAir) / kAir;
+		final double nu = 0.037 * Math.pow(re, 0.8) * Math.pow(pr, 1.0/3.0);
+		final double aw = 101.0785;
+		final double mass = 3500;
+		final double specificHeat = 490;
 		
-		// one sixth of the delta every 15 minutes
-		double ambientDelta = 0;
-		for (long d=duration; d>0; d -= 15*60) {
-			ambientDelta += (weather.getTemperature().getCelcius() - (currentTemp.getCelcius() + ambientDelta)) / 6.0;
-		}
-
-		log.trace("Ambient delta temp. celcius=" + ambientDelta);
-		return ambientDelta;
+		// inputs
+		final double tempOutside = weather.getTemperature().getKelvin();
+		final double tempCurrent = currentTemp.getKelvin();
+		
+		// calcuations
+		final double convectionWatts = nu * kAir * aw * (tempOutside - tempCurrent);
+		final double convectionDelta = (duration / (mass * specificHeat)) * convectionWatts;
+		
+		return convectionDelta;
 	}
 
 	private double radiationEffect(WeatherData weather, long duration, Date date) {

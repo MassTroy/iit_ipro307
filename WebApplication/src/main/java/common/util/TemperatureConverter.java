@@ -14,4 +14,8 @@ public class TemperatureConverter {
 		return celcius + 274.15;
 	}
 
+	public static double kelvinToCelcius(double kelvin) {
+		return kelvin - 274.15;
+	}
+
 }

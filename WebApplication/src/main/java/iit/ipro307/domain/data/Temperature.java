@@ -12,8 +12,16 @@ public class Temperature {
 	public Temperature(double value, TemperatureUnit unit) {
 		if (unit == TemperatureUnit.Celsius)
 			this.celcius = value;
-		else
+		else if (unit == TemperatureUnit.Fahrenheit)
 			this.celcius = TemperatureConverter.fahrenheitToCelcius(value);
+		else if (unit == TemperatureUnit.Kelvin)
+			this.celcius = TemperatureConverter.kelvinToCelcius(value);
+		else
+			throw new RuntimeException("Invalid argument. TemeratureUnit=" + unit);
+	}
+
+	public double getKelvin() {
+		return TemperatureConverter.celciusToKelvin(celcius);
 	}
 
 	public double getCelcius() {
