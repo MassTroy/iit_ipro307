@@ -22,9 +22,9 @@ public class SegmentTemperatureCalculator {
 	private static final double rhoAir = 1.184;
 	private static final double length = 12.192;
 	private static final double muAir = 1.983e5;
-	private static final double lp = 1005.0;
+	private static final double Cp = 1005.0;
 	private static final double kAir = 0.0257;
-	private static final double pressure = (lp * muAir) / kAir;
+	private static final double prandtl = (Cp * muAir) / kAir;
 	
 	@Autowired
 	private PrefixLogger log;
@@ -34,47 +34,34 @@ public class SegmentTemperatureCalculator {
 	public Temperature computeFinalTemp(Temperature currentTemp, WeatherData weather, long duration) {
 		double watts = 0;
 		watts += convectionWatts(currentTemp, weather);
-		//watts += conductionWatts(currentTemp, weather);
 		watts += solarRadiationWatts(weather, new Date());
 		watts += rainWatts(weather);
+		log.debug("watts: " + watts);
 		
 		double wallTemp = ((watts * duration) / (massContainer * specificHeatSteel)) + currentTemp.getKelvin();
 		
-		double wallsToInteriorWatts = wallsToInteriorWatts(currentTemp, wallTemp, duration);
+		double wallsToInteriorWatts = wallsToInteriorWatts(currentTemp, wallTemp);
 		
 		double airTemp = (duration * wallsToInteriorWatts) / (massAir * specificHeatAir);
 
-		//return new Temperature(airTemp, TemperatureUnit.Kelvin);
-		return new Temperature(wallTemp, TemperatureUnit.Kelvin);
+		return new Temperature(airTemp, TemperatureUnit.Kelvin);
+		//return new Temperature(wallTemp, TemperatureUnit.Kelvin);
 	}
 
 	private double convectionWatts(Temperature currentTemp, WeatherData weather) {
 		final double velocity = 24.5872; // 55 mph
 		final double reynoldsExterior = (rhoAir * velocity * length) / muAir;
-		final double nusseltExterior = 0.037 * Math.pow(reynoldsExterior, 0.8) * Math.pow(pressure, 1.0/3.0);
+		final double nusseltExterior = 0.037 * Math.pow(reynoldsExterior, 0.8) * Math.pow(prandtl, 1.0/3.0);
 		
 		// inputs
 		final double tempOutside = weather.getTemperature().getKelvin();
 		final double tempCurrent = currentTemp.getKelvin();
 		
 		// calcuations
-		final double convectionWatts = nusseltExterior * kAir * area * (tempOutside - tempCurrent);
+		final double convectionWatts = ((nusseltExterior * kAir) / length) * area * (tempOutside - tempCurrent);
 		
+		log.debug("Convection watts: " + convectionWatts);
 		return convectionWatts;
-	}
-
-	private double conductionWatts(Temperature currentTemp, WeatherData weather) {
-		final double kw = 16;
-		final double deltaX = 0.00478;
-		
-		// inputs
-		final double tempOutside = weather.getTemperature().getKelvin();
-		final double tempCurrent = currentTemp.getKelvin();
-		
-		// calcuations
-		final double conductionWatts = (kw * area * (tempOutside - tempCurrent)) / deltaX;
-		
-		return conductionWatts;
 	}
 
 	private double solarRadiationWatts(WeatherData weather, Date date) {
@@ -100,7 +87,8 @@ public class SegmentTemperatureCalculator {
 			// TODO: outgoing radiation effect
 			solarWatts = 0;
 		}
-		
+
+		log.debug("Solar watts: " + solarWatts);
 		return solarWatts;
 	}
 	
@@ -109,12 +97,14 @@ public class SegmentTemperatureCalculator {
 		return 0;
 	}
 
-	private double wallsToInteriorWatts(Temperature currentTemp, double wallTemp, double duration) {
+	private double wallsToInteriorWatts(Temperature currentTemp, double wallTemp) {
+		final double heatTransferCoef = 7.9;
 		final double reynoldsInterior = (rhoAir * length) / muAir;
-		final double nusseltInterior = 0.037 * Math.pow(reynoldsInterior, 0.5) * Math.pow(pressure, 1.0/3.0);
+		final double nusseltInterior = 0.037 * Math.pow(reynoldsInterior, 0.5) * Math.pow(prandtl, 1.0/3.0);
 		
-		double wallsToInteriorWatts = nusseltInterior * kAir / length * area * (wallTemp - currentTemp.getKelvin());
+		double wallsToInteriorWatts = heatTransferCoef * area * (wallTemp - currentTemp.getKelvin());
 		
+		log.debug("wallToInteriorWatts: " + wallsToInteriorWatts);
 		return wallsToInteriorWatts;
 	}
 
