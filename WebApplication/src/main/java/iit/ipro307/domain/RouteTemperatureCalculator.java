@@ -29,24 +29,26 @@ public class RouteTemperatureCalculator {
 		double maxTemp = startingTemp.getCelcius();
 		double averageTemp = startingTemp.getCelcius();
 		long duration = 0;
-		Temperature currentTemp = startingTemp;
+		Temperature currentInterior = startingTemp;
+		Temperature currentWall = startingTemp;
 		
 		for (RouteSegment segment : route.getSegments()) {
 			WeatherData weather = openWeatherMapClient.getWeather(segment.getEndLocation(), new Date());
 			long segmentDuration = segment.getDuration();
-			currentTemp = segmentTemperatureCalculator.computeFinalTemp(currentTemp, weather, segmentDuration);
+			currentWall = segmentTemperatureCalculator.computeFinalWallTemp(currentInterior, weather, segmentDuration);
+			currentInterior = segmentTemperatureCalculator.computeFinalInteriorTemp(currentInterior, currentWall, weather, segmentDuration);
 			
 			// update temperature data
-			if (currentTemp.getCelcius() < minTemp)
-				minTemp = currentTemp.getCelcius();
-			if (currentTemp.getCelcius() > maxTemp)
-				maxTemp = currentTemp.getCelcius();
-			averageTemp = ((averageTemp * duration) + (currentTemp.getCelcius() * segmentDuration)) / (duration + segmentDuration);
+			if (currentInterior.getCelcius() < minTemp)
+				minTemp = currentInterior.getCelcius();
+			if (currentInterior.getCelcius() > maxTemp)
+				maxTemp = currentInterior.getCelcius();
+			averageTemp = ((averageTemp * duration) + (currentInterior.getCelcius() * segmentDuration)) / (duration + segmentDuration);
 			duration += segmentDuration;
-			log.debug("Temperature after segment. celcius=" + currentTemp.getCelcius());
+			log.debug("Temperature after segment. celcius=" + currentInterior.getCelcius());
 		}
 
-		TemperatureSummary tempSummary = new TemperatureSummary(new Temperature(minTemp), new Temperature(maxTemp), currentTemp, new Temperature(averageTemp));
+		TemperatureSummary tempSummary = new TemperatureSummary(new Temperature(minTemp), new Temperature(maxTemp), currentInterior, new Temperature(averageTemp));
 		return tempSummary;
 	}
 
