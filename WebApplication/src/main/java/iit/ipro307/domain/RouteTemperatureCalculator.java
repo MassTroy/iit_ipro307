@@ -30,13 +30,11 @@ public class RouteTemperatureCalculator {
 		double averageTemp = startingTemp.getCelcius();
 		long duration = 0;
 		Temperature currentInterior = startingTemp;
-		Temperature currentWall = startingTemp;
 		
 		for (RouteSegment segment : route.getSegments()) {
 			WeatherData weather = openWeatherMapClient.getWeather(segment.getEndLocation(), new Date());
 			long segmentDuration = segment.getDuration();
-			currentWall = segmentTemperatureCalculator.computeFinalWallTemp(currentInterior, weather, segmentDuration);
-			currentInterior = segmentTemperatureCalculator.computeFinalInteriorTemp(currentInterior, currentWall, weather, segmentDuration);
+			currentInterior = segmentTemperatureCalculator.computeFinalTemperature(currentInterior, weather, segmentDuration);
 			
 			// update temperature data
 			if (currentInterior.getCelcius() < minTemp)
