@@ -5,6 +5,7 @@ import iit.ipro307.domain.data.Route;
 import iit.ipro307.domain.data.RouteSegment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class RouteReducer {
 		long durationSeconds = 0;
 		GeoCoordinate startLocation = null;
 		GeoCoordinate endLocation = null;
+		Date startTime = null;
+		Date endTime = null;
 
 		for (RouteSegment segment : route.getSegments()) {
 			// add to sums
@@ -32,11 +35,14 @@ public class RouteReducer {
 			durationSeconds += segment.getDuration();
 			if (startLocation == null)
 				startLocation = segment.getStartLocation();
+			if (startTime == null)
+				startTime = segment.getStartTime();
 			endLocation = segment.getEndLocation();
+			endTime = segment.getEndTime();
 
 			// if the combined segment is big enough
 			if (distanceMeters > minMeters) {
-				RouteSegment newSegment = new RouteSegment(distanceMeters, durationSeconds, startLocation, endLocation);
+				RouteSegment newSegment = new RouteSegment(distanceMeters, durationSeconds, startLocation, endLocation, startTime, endTime);
 				log.trace("Reduced segment: newSegment=" + newSegment);
 				reducedSegments.add(newSegment);
 
@@ -49,7 +55,7 @@ public class RouteReducer {
 
 		// add final segment
 		if (distanceMeters > 0 && durationSeconds > 0 && startLocation != null && endLocation != null) {
-			RouteSegment newSegment = new RouteSegment(distanceMeters, durationSeconds, startLocation, endLocation);
+			RouteSegment newSegment = new RouteSegment(distanceMeters, durationSeconds, startLocation, endLocation, startTime, endTime);
 			log.trace("Reduced segment: newSegment=" + newSegment);
 			reducedSegments.add(newSegment);
 		}

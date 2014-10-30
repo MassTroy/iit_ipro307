@@ -32,13 +32,13 @@ public class SegmentTemperatureCalculator {
 	
 	Random random = new Random();
 
-	public Temperature computeFinalTemperature(Temperature currentTemp, WeatherData weather, long duration) {
+	public Temperature computeFinalTemperature(Temperature currentTemp, WeatherData weather, long duration, Date startTime, Date endTime) {
 		double deltaNewton = deltaNewtonConvection(currentTemp, weather, duration);
 		log.debug("deltaNewton="+deltaNewton);
 		
-		double solarWatts = solarRadiationWatts(weather, new Date()); // TODO adjust date based on segment
+		double solarWatts = solarRadiationWatts(weather, startTime, endTime);
 		double deltaSolar = (solarWatts * duration) / (massContainer * specificHeatSteel);
-		log.debug("deltaSolar="+deltaSolar);
+		log.debug("deltaSolar="+deltaSolar + ", time="+new Date((startTime.getTime() + endTime.getTime()) / 2));
 		
 		double finalTemp = currentTemp.getKelvin() + deltaNewton + deltaSolar;
 		return new Temperature(finalTemp , TemperatureUnit.Kelvin);
@@ -59,10 +59,10 @@ public class SegmentTemperatureCalculator {
 		return delta;
 	}
 
-	private double solarRadiationWatts(WeatherData weather, Date date) {
+	private double solarRadiationWatts(WeatherData weather, Date startTime, Date endTime) {
 		final long sunrise = weather.getSunrise().getTime();
 		final long sunset = weather.getSunset().getTime();
-		final long current = date.getTime();
+		final long current = (startTime.getTime() + endTime.getTime()) / 2;
 		
 		final double solarWatts;
 		

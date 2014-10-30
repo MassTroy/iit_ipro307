@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 import com.google.maps.api.directions.DirectionsResponse;
 import com.google.maps.api.directions.Leg;
 import com.google.maps.api.directions.Step;
-import common.util.DateOffsetCalculator;
 import common.util.PrefixLogger;
 
 @Service
@@ -47,17 +46,22 @@ public class GoogleDirectionsClient {
 				for (com.google.maps.api.directions.Route googleRoute : resp.getRoutes()) {
 
 					List<RouteSegment> segments = new ArrayList<RouteSegment>();
-					long duration = 0;
+					Date depart = new Date();
+					Date startTime = depart;
+					Date arrive = null;
 					for (Leg leg : googleRoute.getLegs()) {
-						duration += leg.getDuration().getValue();
 						for (Step step : leg.getSteps()) {
-							RouteSegment routePoint = new RouteSegment(step);
+							long stepDuration = step.getDuration().getValue();
+							Date endTime = new Date(startTime.getTime() + stepDuration*1000);
+							
+							RouteSegment routePoint = new RouteSegment(step, startTime, endTime);
 							segments.add(routePoint);
+							
+							startTime = endTime;
+							arrive = endTime;
 						}
 					}
 
-					Date depart = new Date();
-					Date arrive = DateOffsetCalculator.offsetSeconds(depart, duration);
 					Route routePoints = new Route(googleRoute, depart, arrive, segments);
 					routePointsList.add(routePoints);
 				}
