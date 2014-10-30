@@ -14,6 +14,8 @@ import common.util.PrefixLogger;
 
 @Service
 public class SegmentTemperatureCalculator {
+	private static final double solarWattsPerMeterSquare = 1050;
+	
 	private static final double massContainer = 3800;
 	private static final double specificHeatSteel = 490;
 	private static final double massAir = 85.829;
@@ -60,22 +62,6 @@ public class SegmentTemperatureCalculator {
 		return delta;
 	}
 
-	private double convectionWatts(Temperature currentTemp, WeatherData weather) {
-		final double velocity = 24.5872; // 55 mph
-		final double reynoldsExterior = (rhoAir * velocity * length) / muAir;
-		final double nusseltExterior = 0.33 * Math.pow(reynoldsExterior, 0.5) * Math.pow(prandtl, 1.0/3.0);
-		final double hfc = ((nusseltExterior * kAir) / length);
-		
-		// inputs
-		final double tempOutside = weather.getTemperature().getKelvin();
-		final double tempCurrent = currentTemp.getKelvin();
-		
-		// calcuations
-		final double convectionWatts = hfc * area * (tempOutside - tempCurrent);
-		
-		return convectionWatts;
-	}
-
 	private double solarRadiationWatts(WeatherData weather, Date date) {
 		final long sunrise = weather.getSunrise().getTime();
 		final long sunset = weather.getSunset().getTime();
@@ -92,8 +78,10 @@ public class SegmentTemperatureCalculator {
 			final double skyCover = weather.getSkyCover().getPercentageMultiplier();
 			
 			// calcuations
-			final double r0 = 990 * Math.sin(solarAngle) - 30;
-			solarWatts = (r0 * (1 - (0.75 * Math.pow(skyCover, 3.4)))) / area;
+			solarWatts = solarWattsPerMeterSquare * 
+					Math.sin(solarAngle) * 
+					(1.0 - (0.75 * Math.pow(skyCover, 3.4)))* 
+					(area / 4.0);
 		} else {
 			// night time
 			// TODO: outgoing radiation effect
