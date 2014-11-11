@@ -1,6 +1,6 @@
 package iit.ipro307.domain.client;
 
-import iit.ipro307.config.AppConfig;
+import iit.ipro307.config.DomainConfig;
 import iit.ipro307.domain.data.Route;
 import iit.ipro307.domain.data.RouteSegment;
 import iit.ipro307.exception.BadRequestException;
@@ -29,7 +29,7 @@ public class GoogleDirectionsClient {
 		String url = API_DIRECTIONS_URL
 				+ "origin=" + origin
 				+ "&destination=" + destination
-				+ "&key=" + AppConfig.GOOGLE_API_KEY;
+				+ "&key=" + DomainConfig.GOOGLE_API_KEY;
 
 		return getRoutes(url);
 	}
@@ -78,7 +78,7 @@ public class GoogleDirectionsClient {
 				+ "origin=" + origin
 				+ "&destination=" + destination
 				+ "&waypoints=" + waypoint
-				+ "&key=" + AppConfig.GOOGLE_API_KEY;
+				+ "&key=" + DomainConfig.GOOGLE_API_KEY;
 
 		return getRoutes(url);
 	}

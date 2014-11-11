@@ -28,9 +28,10 @@
 	</build>
 
 	<modules>
-		<module>WebApplication</module>
 		<module>GoogleMaps_API</module>
 		<module>OpenWeatherMap_API</module>
+		<module>PassiveThermalDomain</module>
+		<module>WebApplication</module>
 	</modules>
 
 </project>

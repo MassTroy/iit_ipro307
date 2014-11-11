@@ -1,6 +1,6 @@
 package iit.ipro307.domain.client;
 
-import iit.ipro307.config.AppConfig;
+import iit.ipro307.config.DomainConfig;
 import iit.ipro307.domain.data.GeoCoordinate;
 import iit.ipro307.domain.data.WeatherData;
 import iit.ipro307.exception.BadRequestException;
@@ -17,7 +17,7 @@ import common.util.PrefixLogger;
 @Service
 public class OpenWeatherMapClient {
 	private static final String API_WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?units=metric&";
-	private static final String API_KEY_SUFFIX = "&APPID=" + AppConfig.OPEN_WEATHER_MAP_API_KEY;
+	private static final String API_KEY_SUFFIX = "&APPID=" + DomainConfig.OPEN_WEATHER_MAP_API_KEY;
 
 	@Autowired
 	private PrefixLogger log;

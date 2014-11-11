@@ -1,6 +1,6 @@
 package iit.ipro307.domain.client;
 
-import iit.ipro307.config.AppConfig;
+import iit.ipro307.config.DomainConfig;
 import iit.ipro307.domain.data.GeoCoordinate;
 import iit.ipro307.exception.BadRequestException;
 
@@ -15,7 +15,7 @@ public class GoogleGeocodeClient {
 	private static final String GEOCODE_JSON_ADDRESS = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 
 	public GeoCoordinate getGeoCoordinate(String locationName) throws BadRequestException {
-		String reqUrl = GEOCODE_JSON_ADDRESS + locationName + "&key=" + AppConfig.GOOGLE_API_KEY;
+		String reqUrl = GEOCODE_JSON_ADDRESS + locationName + "&key=" + DomainConfig.GOOGLE_API_KEY;
 
 		RestTemplate restTemplate = new RestTemplate();
 		GeocodingResponse resp = restTemplate.getForObject(reqUrl, GeocodingResponse.class);

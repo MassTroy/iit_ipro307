@@ -7,4 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan({ DomainConfig.COMPONENT_SCAN })
 public class DomainConfig {
 	public static final String COMPONENT_SCAN = "iit.ipro307.domain";
+
+	public static final String GOOGLE_API_KEY = "AIzaSyAdorDhOfuE0hwHw9lcQgAwLSq1rAzNdvs";
+	public static final String OPEN_WEATHER_MAP_API_KEY = "5c42a4b74ec48c12b24aa57982417e04";
 }
