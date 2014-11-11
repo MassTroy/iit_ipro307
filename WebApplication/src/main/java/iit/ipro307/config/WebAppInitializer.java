@@ -9,6 +9,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * Spring class which initialized the application
+ * @author Troy Mass
+ */
 @Order(2)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	public static final int MAX_UPLOAD_MB = 25;

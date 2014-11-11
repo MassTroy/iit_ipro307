@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 
 import common.util.PrefixLogger;
 
+/**
+ * Reduce a route into fewer pieces by combining short segments into larger segments
+ * @author Troy Mass
+ */
 @Service
 public class RouteReducer {
 	@Autowired

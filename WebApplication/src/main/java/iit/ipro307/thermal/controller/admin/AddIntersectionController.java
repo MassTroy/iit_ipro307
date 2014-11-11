@@ -22,6 +22,12 @@ public class AddIntersectionController extends AbstractController {
 	@Autowired
 	private GoogleGeocodeClient googleGeocodeClient;
 
+	/**
+	 * Deprectated. This was used to add a static list of locations to the database which are good waypoints to use.
+	 * @param locationName
+	 * @return
+	 * @throws BadRequestException
+	 */
 	@RequestMapping(value = { "/addIntersection" }, method = RequestMethod.GET)
 	@Transactional(readOnly = false)
 	@ResponseBody

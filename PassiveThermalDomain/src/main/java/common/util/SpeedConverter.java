@@ -1,5 +1,8 @@
 package common.util;
 
+/**
+ * Convert speeds between different units
+ */
 public class SpeedConverter {
 
 	public static double metersPerSecondToMilesPerHour(double metersPerSecond) {

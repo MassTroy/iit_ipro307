@@ -12,6 +12,11 @@ import org.springframework.stereotype.Service;
 
 import common.util.PrefixLogger;
 
+/**
+ * Compute temperatures for each segment of the route based on weather data.
+ * This class contains the entire thermal model
+ * @author Troy Mass, Chad Hemindinger
+ */
 @Service
 public class SegmentTemperatureCalculator {
 	private static final double solarWattsPerMeterSquare = 250.0;

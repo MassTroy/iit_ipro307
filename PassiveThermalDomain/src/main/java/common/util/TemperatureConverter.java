@@ -1,5 +1,8 @@
 package common.util;
 
+/**
+ * Convert temperature value between different units
+ */
 public class TemperatureConverter {
 
 	public static double fahrenheitToCelcius(double fahrenheit) {

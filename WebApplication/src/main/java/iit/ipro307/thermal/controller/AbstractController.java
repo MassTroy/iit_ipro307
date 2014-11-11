@@ -4,13 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 
+/**
+ * Abstract controller class. Autowires up all shared items such as the request and session
+ * @author Troy Mass
+ */
 public abstract class AbstractController {
 	public static final String FORM_ATTRIBUTE = "form";
 
-	@Autowired
-	protected AutowireCapableBeanFactory beanFactory;
 	@Autowired
 	protected HttpServletRequest request;
 	@Autowired

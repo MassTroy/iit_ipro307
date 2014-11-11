@@ -43,13 +43,17 @@ public class GoogleDirectionsClient {
 			if (resp != null && resp.getRoutes() != null && resp.getRoutes().size() >= 1) {
 				List<Route> routePointsList = new ArrayList<Route>();
 
+				// for each route
 				for (com.google.maps.api.directions.Route googleRoute : resp.getRoutes()) {
 
 					List<RouteSegment> segments = new ArrayList<RouteSegment>();
 					Date depart = new Date();
 					Date startTime = depart;
 					Date arrive = null;
+					// turn each leg and each step into a RouteSegment
+					// legs are from origin to waypoint, waypoint to waypoint, and waypoint to destination
 					for (Leg leg : googleRoute.getLegs()) {
+						// steps are each turn or road change along the route
 						for (Step step : leg.getSteps()) {
 							long stepDuration = step.getDuration().getValue();
 							Date endTime = new Date(startTime.getTime() + stepDuration*1000);

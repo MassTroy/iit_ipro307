@@ -17,6 +17,10 @@ import org.springframework.stereotype.Service;
 import common.util.DistanceConverter;
 import common.util.PrefixLogger;
 
+/**
+ * Main application
+ * @author Troy Mass
+ */
 @Service
 public class ThermalRouteService {
 	@Autowired

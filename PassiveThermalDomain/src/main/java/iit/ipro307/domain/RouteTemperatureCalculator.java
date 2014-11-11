@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 
 import common.util.PrefixLogger;
 
+/**
+ * Compute temperature for an entire route using the thermal model in SegmentTemperatureCalcutor
+ * @author Troy Mass
+ */
 @Service
 public class RouteTemperatureCalculator {
 	@Autowired

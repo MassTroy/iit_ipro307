@@ -1,5 +1,8 @@
 package common.util;
 
+/**
+ * Convert distance between different units
+ */
 public class DistanceConverter {
 	private static final double MILES_TO_METERS = 1609.34;
 

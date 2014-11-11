@@ -2,6 +2,9 @@ package common.util;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Log4j logger which prepends the class, method, and line number of where the log statement was printed from
+ */
 public class PrefixLogger {
 	private static final char LOG_SEPARATOR = '|';
 
