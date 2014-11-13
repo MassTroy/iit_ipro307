@@ -13,7 +13,7 @@ import common.util.PrefixLogger;
  */
 @Configuration
 @ComponentScan(basePackages = "iit.ipro307.thermal")
-@Import(value = { PersistenceConfig.class, DomainConfig.class })
+@Import(value = { DomainConfig.class })
 public class AppConfig {
 	/**
 	 * Define the Logger bean

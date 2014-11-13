@@ -40,12 +40,6 @@ Data objects for storing domain layer data objects such as temperature or coordi
 ## iit.ipro307.exception
 Custom exceptions used by the application to control various error levels of the application
 
-## iit.ipro307.persistence
-Entity objects used for storing to a database. These objects are abandoned and no longer in use.
-
-## iit.ipro307.dao
-Data Access Objects to fetch and store the database entities. These objects are abandoned and no longer in use.
-
 ## iit.ipro307.thermal.model
 Model objects representing the input data contained in a form, and all data required for rendering the page.
 
